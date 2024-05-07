@@ -1,0 +1,19 @@
+.Copyright {
+  font-size: 14px;
+  margin-bottom: 0;
+  text-align: center;
+  margin-top: 30px;
+}
+
+.Footer {
+  padding: 50px 0 65px;
+}
+
+.ListInline {
+  margin: 0;
+  padding: 0;
+}
+
+.TextCenter {
+  text-align: center !important;
+}
