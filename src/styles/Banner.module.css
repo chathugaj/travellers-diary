@@ -1,0 +1,12 @@
+.Banner {
+  margin-bottom: 50px;
+  background: no-repeat center center;
+  background-color: #6c757d;
+  background-attachment: scroll;
+  position: relative;
+  background-size: cover;
+}
+
+.BannerImage {
+  background: url("../assets/image_traveler_diary.jpeg") no-repeat center center;
+}
