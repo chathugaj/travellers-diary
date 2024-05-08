@@ -1,7 +1,7 @@
 import styles from "./App.module.css";
 import NavBar from "./components/NavBar";
-// import Footer from "./components/Footer";
 import Banner from "./components/Banner";
+import PageFooter from "./components/PageFooter";
 
 function App() {
   return (
@@ -15,7 +15,7 @@ function App() {
         <br />
         wefwjkadfekv
       </div>
-      {/* <Footer></Footer> */}
+      <PageFooter></PageFooter>
     </div>
   );
 }

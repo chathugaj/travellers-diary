@@ -1,8 +1,8 @@
 import React from "react";
-import styles from "../styles/Footer.module.css";
+import styles from "../styles/PageFooter.module.css";
 import { Container, Row, Col } from "react-bootstrap";
 
-const Footer = () => {
+const PageFooter = () => {
   return (
     <footer className={styles.Footer}>
       <Container>
@@ -62,4 +62,4 @@ const Footer = () => {
   );
 };
 
-export default Footer;
+export default PageFooter;
