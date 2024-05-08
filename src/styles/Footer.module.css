@@ -17,3 +17,7 @@
 .TextCenter {
   text-align: center !important;
 }
+
+.SocialLink {
+  color: var(--dark);
+}
