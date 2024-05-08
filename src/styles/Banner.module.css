@@ -8,5 +8,20 @@
 }
 
 .BannerImage {
-  background: url("../assets/image_traveler_diary.jpeg") no-repeat center center;
+  background: url("../assets/image\ 2\ traveldi.jpeg") no-repeat center center;
+}
+
+.SiteHeading {
+  text-align: center;
+  padding: 200px 0;
+}
+
+.OverLay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background-color: #212529;
+  opacity: -0.5;
 }

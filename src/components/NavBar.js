@@ -1,6 +1,5 @@
 import React from "react";
 import { Navbar, Nav, Container } from "react-bootstrap";
-import NavbarCollapse from "react-bootstrap/esm/NavbarCollapse";
 import styles from "../styles/NavBar.module.css";
 
 const NavBar = () => {
