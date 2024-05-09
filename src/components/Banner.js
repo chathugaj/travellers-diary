@@ -10,7 +10,7 @@ const Banner = () => {
         <Row>
           <Col md={10} lg={8} className="mx-auto position-relative">
             <div className={styles.SiteHeading}>
-              <h1>Record Your Memories</h1>
+              <h1 className={styles.H1}>Record Your Memories</h1>
             </div>
           </Col>
         </Row>

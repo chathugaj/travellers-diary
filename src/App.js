@@ -2,6 +2,7 @@ import styles from "./App.module.css";
 import NavBar from "./components/NavBar";
 import Banner from "./components/Banner";
 import PageFooter from "./components/PageFooter";
+import ContentSearch from "./components/ContentSearch";
 
 function App() {
   return (
@@ -9,11 +10,10 @@ function App() {
       <NavBar></NavBar>
       <Banner></Banner>
       <div>
-        sdnjfefjfhruwsiwqoi
+        <ContentSearch></ContentSearch>
         <br />
-        ejhfrhjedfhwr
+
         <br />
-        wefwjkadfekv
       </div>
       <PageFooter></PageFooter>
     </div>
