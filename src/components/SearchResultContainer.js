@@ -1,6 +1,6 @@
 import React from "react";
 import { Col, Container, Row } from "react-bootstrap";
-import { SearchSidebar } from "../components";
+import { SearchResultViewer, SearchSidebar } from "../components";
 import styles from "../styles/SearchResultContainer.module.css";
 
 function SearchResultContainer() {
@@ -10,7 +10,9 @@ function SearchResultContainer() {
         <Col md={4}>
           <SearchSidebar></SearchSidebar>
         </Col>
-        <Col md={8}></Col>
+        <Col md={8}>
+          <SearchResultViewer></SearchResultViewer>
+        </Col>
       </Row>
     </Container>
   );
