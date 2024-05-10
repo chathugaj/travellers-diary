@@ -1,0 +1,6 @@
+.ImageArticle {
+  height: 200px;
+  object-fit: cover;
+  width: 100% !important;
+  display: block !important;
+}
