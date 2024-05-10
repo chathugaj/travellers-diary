@@ -1,22 +1,22 @@
-import styles from "./App.module.css";
-import NavBar from "./components/NavBar";
-import Banner from "./components/Banner";
-import PageFooter from "./components/PageFooter";
-import ContentSearch from "./components/ContentSearch";
-import ArticleCardContainer from "./components/ArticleCardContainer";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Layout from "./pages/Layout";
+import Home from "./pages/Home";
+import BlogPosts from "./pages/BlogPosts";
+import SignIn from "./pages/SignUp";
+import SignUp from "./pages/SignIn";
 
 function App() {
   return (
-    <div className={styles.App}>
-      <NavBar></NavBar>
-      <Banner></Banner>
-
-      <ContentSearch></ContentSearch>
-
-      <ArticleCardContainer></ArticleCardContainer>
-
-      <PageFooter></PageFooter>
-    </div>
+    <BrowserRouter>
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index element={<Home />} />
+          <Route path="posts" element={<BlogPosts />} />
+          <Route path="signin" element={<SignIn />} />
+          <Route path="signup" element={<SignUp />} />
+        </Route>
+      </Routes>
+    </BrowserRouter>
   );
 }
 

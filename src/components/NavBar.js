@@ -1,6 +1,7 @@
 import React from "react";
 import { Navbar, Nav, Container } from "react-bootstrap";
 import styles from "../styles/NavBar.module.css";
+import { Link } from "react-router-dom";
 
 const NavBar = () => {
   return (
@@ -19,21 +20,21 @@ const NavBar = () => {
         <Navbar.Toggle aria-controls="navbarScroll" />
         <Navbar.Collapse id="navbarScroll" className="justify-content-end">
           <Nav className="ml-auto my-2 my-lg-0" navbarScroll>
-            <Nav.Link className={styles.NavLink} href="#action1">
+            {/* <Nav.Link className={styles.NavLink} href="/">
               HOME
-            </Nav.Link>
-            <Nav.Link className={styles.NavLink} href="#action2">
-              CONTACT US
-            </Nav.Link>
-            <Nav.Link className={styles.NavLink} href="#action3">
-              BLOG POST
-            </Nav.Link>
-            <Nav.Link className={styles.NavLink} href="#action4">
+            </Nav.Link> */}
+            <Link className={styles.NavLink} to="/">
+              HOME
+            </Link>
+            <Link className={styles.NavLink} to="/posts">
+              BLOG POSTS
+            </Link>
+            <Link className={styles.NavLink} to="/signin">
               SIGN IN
-            </Nav.Link>
-            <Nav.Link className={styles.NavLink} href="#action5">
+            </Link>
+            <Link className={styles.NavLink} to="/signup">
               SIGN UP
-            </Nav.Link>
+            </Link>
           </Nav>
         </Navbar.Collapse>
       </Container>
