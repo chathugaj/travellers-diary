@@ -2,15 +2,14 @@ import React from "react";
 import { Container } from "react-bootstrap";
 import ArticleCards from "./ArticleCards";
 import SectionHeader from "./SectionHeader";
+import styles from "../styles/ArticleCardContainer.module.css";
 
 const ArticleCardContainer = () => {
   return (
-    <div>
-      <Container>
-        <SectionHeader></SectionHeader>
-        <ArticleCards></ArticleCards>
-      </Container>
-    </div>
+    <Container className={styles.CardContainer}>
+      <SectionHeader></SectionHeader>
+      <ArticleCards></ArticleCards>
+    </Container>
   );
 };
 

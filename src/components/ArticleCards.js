@@ -1,21 +1,20 @@
 import React from "react";
 import ArticleCard from "./ArticleCard";
+import { Row, Col } from "react-bootstrap";
 
 const ArticleCards = () => {
   return (
-    <div>
-      <div class="row gy-4 row-cols-1 row-cols-md-2 row-cols-xl-3">
-        <div class="col">
-          <ArticleCard></ArticleCard>
-        </div>
-        <div class="col">
-          <ArticleCard></ArticleCard>
-        </div>
-        <div class="col">
-          <ArticleCard></ArticleCard>
-        </div>
-      </div>
-    </div>
+    <Row md={2} xl={3}>
+      <Col>
+        <ArticleCard></ArticleCard>
+      </Col>
+      <Col>
+        <ArticleCard></ArticleCard>
+      </Col>
+      <Col>
+        <ArticleCard></ArticleCard>
+      </Col>
+    </Row>
   );
 };
 
