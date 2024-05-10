@@ -1,7 +1,13 @@
 import React from "react";
+import { ContentSearch, SearchResultContainer } from "../components";
 
 const BlogPosts = () => {
-  return <div>;asdlkfj;j;iwedskljjdkdkdjdkdkdkdkdkdk</div>;
+  return (
+    <>
+      <ContentSearch></ContentSearch>
+      <SearchResultContainer></SearchResultContainer>
+    </>
+  );
 };
 
 export default BlogPosts;

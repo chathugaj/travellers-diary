@@ -6,6 +6,8 @@ import ArticleCards from "./ArticleCards";
 import NavBar from "./NavBar";
 import PageFooter from "./PageFooter";
 import SectionHeader from "./SectionHeader";
+import SearchSidebar from "./SearchSidebar";
+import SearchResultContainer from "./SearchResultContainer";
 
 export {
   Banner,
@@ -16,4 +18,6 @@ export {
   NavBar,
   PageFooter,
   SectionHeader,
+  SearchSidebar,
+  SearchResultContainer,
 };
