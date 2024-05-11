@@ -9,6 +9,7 @@ import SectionHeader from "./SectionHeader";
 import SearchSidebar from "./SearchSidebar";
 import SearchResultContainer from "./SearchResultContainer";
 import SearchResultViewer from "./SearchResultViewer";
+import SearchResultPaginator from "./SearchResultPaginator";
 
 export {
   Banner,
@@ -22,4 +23,5 @@ export {
   SearchSidebar,
   SearchResultContainer,
   SearchResultViewer,
+  SearchResultPaginator,
 };

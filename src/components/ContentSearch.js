@@ -7,7 +7,7 @@ const ContentSearch = () => {
   return (
     <Container>
       <Row>
-        <Form inline>
+        <Form inline="inline">
           <Row>
             <Col md={9} lg={10} xl={10}>
               <Form.Control type="text" className={styles.SearchInput} />
@@ -18,7 +18,7 @@ const ContentSearch = () => {
                 variant="dark"
                 className={styles.SearchButton}
               >
-                <i class="bi bi-search"></i> Search
+                <i className="bi bi-search"></i> Search
               </Button>
             </Col>
           </Row>
