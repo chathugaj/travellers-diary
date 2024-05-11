@@ -1,0 +1,62 @@
+.SignInSection {
+  padding-top: 1.5rem !important;
+  padding-bottom: 1.5rem !important;
+  position: relative !important;
+}
+
+.SignInHeader {
+  padding: 10px 0;
+}
+
+.SignInHeaderText {
+  font-weight: 800;
+  letter-spacing: 1px;
+}
+
+.SignInPageRow {
+  display: flex;
+  justify-content: center;
+}
+
+.SignInForm {
+  align-items: center;
+  flex-direction: column;
+  display: flex;
+}
+
+.Icon {
+  --bs-icon-size: 0.75rem;
+  display: flex;
+  flex-shrink: 0;
+  justify-content: center;
+  align-items: center;
+  font-size: var(--bs-icon-size);
+  width: calc(var(--bs-icon-size) * 2);
+  height: calc(var(--bs-icon-size) * 2);
+  color: var(--bs-primary);
+  border-radius: 50%;
+}
+
+.IconMargin {
+  margin: 1.5rem 0 !important;
+}
+
+.IconXL {
+  --bs-icon-size: 2.5rem;
+}
+
+.IconDark {
+  color: var(--bs-white);
+  background: var(--bs-dark);
+}
+
+.SignInButton {
+  border-radius: 0;
+  font-weight: 800;
+  width: 100%;
+}
+
+.SignInSociaButton {
+  width: 100%;
+  height: 100%;
+}
