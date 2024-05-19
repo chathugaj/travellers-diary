@@ -11,8 +11,13 @@ import {
 } from "react-bootstrap";
 import styles from "../styles/SignIn.module.css";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
+import fetchDefaults from "../api/fetchDefaults";
 
+/**
+ * User signup component. Captures username, password and password confirmation
+ * @returns {SignUp}
+ * @constructor
+ */
 const SignUp = () => {
   const [signUpData, setSignUpData] = useState({
     username: "",
@@ -34,11 +39,22 @@ const SignUp = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      await axios.post("/dj-rest-auth/registration/", signUpData);
-      navigate("/signin");
-    } catch (err) {
-      console.log(">>>>>>>>>>", err);
-      setErrors(err.response?.data);
+      const response = await fetch(`${fetchDefaults.baseUrl}/dj-rest-auth/registration/`, {
+        method: "POST",
+        headers: fetchDefaults.headers,
+        body: JSON.stringify(signUpData),
+      });
+
+      const { status } = response;
+      if (status === 400) {
+        const jsonData = await response.json();
+        setErrors(jsonData);
+      }
+      if (status === 204) {
+        navigate("/signin")
+      }
+    } catch (error) {
+      console.error("Error:", error);
     }
   };
 
@@ -85,6 +101,11 @@ const SignUp = () => {
                       onChange={handleChange}
                     />
                   </Form.Group>
+                  {errors.password1?.map((message, idx) => (
+                      <Alert variant="warning" key={idx}>
+                        {message}
+                      </Alert>
+                  ))}
                   <Form.Group className="mb-3" controlId="password2">
                     <Form.Label className="d-none">password2</Form.Label>
                     <Form.Control
@@ -95,6 +116,11 @@ const SignUp = () => {
                       onChange={handleChange}
                     />
                   </Form.Group>
+                  {errors.password2?.map((message, idx) => (
+                      <Alert variant="warning" key={idx}>
+                        {message}
+                      </Alert>
+                  ))}
                   <div className="mb-3">
                     <Button
                       className={styles.SignInButton}
@@ -104,8 +130,13 @@ const SignUp = () => {
                       SIGN UP
                     </Button>
                   </div>
+                  {errors.non_field_errors?.map((message, idx) => (
+                      <Alert variant="warning" key={idx}>
+                        {message}
+                      </Alert>
+                  ))}
                   <span>
-                    Aready have an account? <Link to="/">SIGN IN</Link>
+                    Already have an account? <Link to="/signin">SIGN IN</Link>
                   </span>
                 </Form>
               </CardBody>

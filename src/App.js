@@ -5,7 +5,6 @@ import BlogPosts from "./pages/BlogPosts";
 import SignUp from "./pages/SignUp";
 import SignIn from "./pages/SignIn";
 import ForgotPassword from "./pages/ForgotPassword";
-import "./api/axiosDefaults";
 
 function App() {
   return (
