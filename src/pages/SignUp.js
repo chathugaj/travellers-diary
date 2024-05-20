@@ -39,7 +39,7 @@ const SignUp = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await fetch(`${fetchDefaults.baseUrl}/dj-rest-auth/registration/`, {
+      const response = await fetch(`dj-rest-auth/registration/`, {
         method: "POST",
         headers: fetchDefaults.headers,
         body: JSON.stringify(signUpData),

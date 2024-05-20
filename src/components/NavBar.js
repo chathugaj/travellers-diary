@@ -2,10 +2,13 @@ import React, {useContext} from "react";
 import {Navbar, Nav, Container} from "react-bootstrap";
 import styles from "../styles/NavBar.module.css";
 import {Link} from "react-router-dom";
-import {CurrentUserContext} from "../App";
+import {useCurrentUser, useSetCurrentUser} from "../contexts/CurrentUserContext";
 
 const NavBar = () => {
-    const currentUser = useContext(CurrentUserContext);
+    const currentUser = useCurrentUser();
+    const setCurrentUser = useSetCurrentUser();
+
+    console.log("Current User", currentUser);
 
     const loggedOutNavItems = <>
         <Link className={styles.NavLink} to="/signin">

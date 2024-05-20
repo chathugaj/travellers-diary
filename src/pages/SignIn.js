@@ -1,4 +1,4 @@
-import React, {useContext, useState} from "react";
+import React, {useState} from "react";
 import {
   Alert,
   Button,
@@ -12,10 +12,12 @@ import {
 import styles from "../styles/SignIn.module.css";
 import {Link, useNavigate} from "react-router-dom";
 import fetchDefaults from "../api/fetchDefaults";
-import {SetCurrentUserContext} from "../App";
+import {useSetCurrentUser} from "../contexts/CurrentUserContext";
+
 
 const SignIn = () => {
-  const setCurrentUser = useContext(SetCurrentUserContext)
+  const setCurrentUser = useSetCurrentUser()
+
   const [signInData, setSignInData] = React.useState({
     username: "",
     password: "",
@@ -48,6 +50,8 @@ const SignIn = () => {
       }
       if (status === 200) {
         const jsonData = await response.json();
+        sessionStorage.setItem("access", jsonData?.access);
+        sessionStorage.setItem("refresh", jsonData?.refresh);
         setCurrentUser(jsonData?.user)
         navigate("/")
       }
