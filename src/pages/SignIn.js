@@ -1,5 +1,6 @@
-import React from "react";
+import React, {useContext, useState} from "react";
 import {
+  Alert,
   Button,
   Card,
   CardBody,
@@ -9,9 +10,52 @@ import {
   Row,
 } from "react-bootstrap";
 import styles from "../styles/SignIn.module.css";
-import { Link } from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
+import fetchDefaults from "../api/fetchDefaults";
+import {SetCurrentUserContext} from "../App";
 
 const SignIn = () => {
+  const setCurrentUser = useContext(SetCurrentUserContext)
+  const [signInData, setSignInData] = React.useState({
+    username: "",
+    password: "",
+  })
+  const [errors, setErrors] = useState({});
+
+  const { username, password } = signInData;
+  const navigate = useNavigate();
+
+  const handleChange = (event) => {
+    setSignInData({
+      ...signInData,
+      [event.target.name]: event.target.value,
+    });
+  };
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      const response = await fetch(`${fetchDefaults.baseUrl}/dj-rest-auth/login/`, {
+        method: "POST",
+        headers: fetchDefaults.headers,
+        body: JSON.stringify(signInData),
+      });
+
+      const { status } = response;
+      if (status === 400) {
+        const jsonData = await response.json();
+        setErrors(jsonData);
+      }
+      if (status === 200) {
+        const jsonData = await response.json();
+        setCurrentUser(jsonData?.user)
+        navigate("/")
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    }
+  };
+
   return (
     <section className={styles.SignInSection}>
       <Container>
@@ -29,37 +73,39 @@ const SignIn = () => {
                 >
                   <i className="bi bi-person"></i>
                 </div>
-                <Form>
-                  <Form.Group className="mb-3" controlId="formBasicEmail">
-                    <Form.Control type="email" placeholder="Email" />
-                    <Form.Text className="text-muted">
-                      Validation Text
-                    </Form.Text>
+                <Form onSubmit={handleSubmit} >
+                  <Form.Group className="mb-3" controlId="username">
+                    <Form.Label className="d-none"  >username</Form.Label>
+                    <Form.Control type="username" name="username" placeholder="Username" value={username} onChange={handleChange} />
                   </Form.Group>
+                  {errors.username?.map((message, idx) => (
+                      <Alert variant="warning" key={idx}>
+                        {message}
+                      </Alert>
+                  ))}
                   <Form.Group className="mb-3" controlId="formBasicPassword">
-                    <Form.Control type="password" placeholder="Password" />
+                    <Form.Label className="d-none" >password</Form.Label>
+                    <Form.Control type="password" placeholder="Password" name="password" value={password} onChange={handleChange} />
                   </Form.Group>
+                  {errors.password?.map((message, idx) => (
+                      <Alert variant="warning" key={idx}>
+                        {message}
+                      </Alert>
+                  ))}
                   <div className="mb-3">
-                    <Button className={styles.SignInButton} variant="dark">
+                    <Button className={styles.SignInButton} variant="dark" type="submit">
                       SIGN IN
                     </Button>
                   </div>
-                  <Link to="/">Forgot your password?</Link>
+                  {errors.non_field_errors?.map((message, idx) => (
+                      <Alert variant="warning" key={idx}>
+                        {message}
+                      </Alert>
+                  ))}
+                  <Link to="/forgot_password">Forgot your password?</Link>
                 </Form>
               </CardBody>
             </Card>
-          </Col>
-        </Row>
-        <Row className={styles.SignInPageRow}>
-          <Col md={6} xl={4} className="mb-3">
-            <Button variant="outline-dark" className={styles.SignInSociaButton}>
-              <i className="bi bi-facebook"></i>
-            </Button>
-          </Col>
-          <Col md={6} xl={4} className="mb-3">
-            <Button variant="outline-dark" className={styles.SignInSociaButton}>
-              <i className="bi bi-google"></i>
-            </Button>
           </Col>
         </Row>
       </Container>
