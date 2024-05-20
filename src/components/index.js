@@ -10,18 +10,20 @@ import SearchSidebar from "./SearchSidebar";
 import SearchResultContainer from "./SearchResultContainer";
 import SearchResultViewer from "./SearchResultViewer";
 import SearchResultPaginator from "./SearchResultPaginator";
+import Avatar from "./Avatar";
 
 export {
-  Banner,
-  ContentSearch,
-  ArticleCardContainer,
-  ArticleCard,
-  ArticleCards,
-  NavBar,
-  PageFooter,
-  SectionHeader,
-  SearchSidebar,
-  SearchResultContainer,
-  SearchResultViewer,
-  SearchResultPaginator,
+    Banner,
+    ContentSearch,
+    ArticleCardContainer,
+    ArticleCard,
+    ArticleCards,
+    NavBar,
+    PageFooter,
+    SectionHeader,
+    SearchSidebar,
+    SearchResultContainer,
+    SearchResultViewer,
+    SearchResultPaginator,
+    Avatar
 };

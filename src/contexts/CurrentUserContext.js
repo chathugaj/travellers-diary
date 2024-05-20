@@ -17,14 +17,16 @@ export const CurrentUserProvider = ({ children }) => {
         "dj-rest-auth/register",
         "dj-rest-auth/token/refresh",
         "dj-rest-auth/token/verify",
+        "dj-rest-auth/logout"
     ]
 
     const handleMount = async () => {
         try {
-            const { data } = axios.get(`${fetchDefaults.baseUrl}/dj-rest-auth/user/`, {
+            const { data } = await axios.get(`${fetchDefaults.baseUrl}/dj-rest-auth/user/`, {
                 headers: fetchDefaults.headers,
                 withCredentials: true,
             });
+
             setCurrentUser(data)
         } catch (err) {
             console.log(err);

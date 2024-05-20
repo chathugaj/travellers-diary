@@ -1,14 +1,25 @@
 import React, {useContext} from "react";
-import {Navbar, Nav, Container} from "react-bootstrap";
+import {Navbar, Nav, Container, NavDropdown, Image} from "react-bootstrap";
 import styles from "../styles/NavBar.module.css";
 import {Link} from "react-router-dom";
 import {useCurrentUser, useSetCurrentUser} from "../contexts/CurrentUserContext";
+import Avatar from "./Avatar";
+import axios from "axios";
+import fetchDefaults from "../api/fetchDefaults";
 
 const NavBar = () => {
     const currentUser = useCurrentUser();
     const setCurrentUser = useSetCurrentUser();
 
-    console.log("Current User", currentUser);
+    const handleSignOut = async (event) => {
+        try {
+            await fetch(`${fetchDefaults.baseUrl}/dj-rest-auth/logout`);
+            setCurrentUser(null)
+        } catch (error) {
+            console.log(error);
+        }
+
+    }
 
     const loggedOutNavItems = <>
         <Link className={styles.NavLink} to="/signin">
@@ -20,10 +31,11 @@ const NavBar = () => {
     </>
 
     const loggedInNavItems = <>
-        <Link className={styles.NavLink} to="/">
-            <Navbar.Text>
-                Signed in as: {currentUser?.username}
-            </Navbar.Text>
+        <Link className={styles.NavLink} to="/" onClick={handleSignOut}>
+            SIGN OUT
+        </Link>
+        <Link className={styles.NavLink} to={`/profiles/${currentUser?.profile_id}`}>
+            <Avatar src={currentUser?.profile_image} height={40} />
         </Link>
     </>
 
