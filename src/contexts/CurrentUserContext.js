@@ -1,7 +1,6 @@
-import {createContext, useContext, useEffect, useMemo, useState} from "react";
-import * as fetchIntercept from "fetch-intercept";
-import fetchDefaults from "../api/fetchDefaults";
+import { createContext, useContext, useEffect, useMemo, useState } from "react";
 import axios from "axios";
+import { axiosReq, axiosRes } from "../api/axiosDefaults";
 
 export const CurrentUserContext = createContext();
 export const SetCurrentUserContext = createContext();
@@ -11,23 +10,16 @@ export const useSetCurrentUser = () => useContext(SetCurrentUserContext);
 
 export const CurrentUserProvider = ({ children }) => {
     const [currentUser, setCurrentUser] = useState(null);
-
-    const skipAuthHeaderUrls = [
-        "dj-rest-auth/login",
-        "dj-rest-auth/register",
-        "dj-rest-auth/token/refresh",
-        "dj-rest-auth/token/verify",
-        "dj-rest-auth/logout"
-    ]
+    const navigate = (path) => {
+        window.location.href = `${window.location.origin}/${path}`;
+    }
 
     const handleMount = async () => {
         try {
-            const { data } = await axios.get(`${fetchDefaults.baseUrl}/dj-rest-auth/user/`, {
-                headers: fetchDefaults.headers,
-                withCredentials: true,
+            const { data } = await axiosRes.get("dj-rest-auth/user/", {
+                withCredentials: true
             });
-
-            setCurrentUser(data)
+            setCurrentUser(data);
         } catch (err) {
             console.log(err);
         }
@@ -37,79 +29,47 @@ export const CurrentUserProvider = ({ children }) => {
         handleMount();
     }, []);
 
-    function refreshToken(refreshT) {
-        fetch(`${fetchDefaults.baseUrl}/dj-rest-auth/token/refresh/`, {
-            method: "POST",
-            headers: fetchDefaults.headers,
-            body: JSON.stringify({ refresh: refreshT })
-        }).then(res => {
-            const {access, refresh, user} = res.json();
-            sessionStorage.setItem("access", access);
-            sessionStorage.setItem("refresh", refresh);
-            setCurrentUser(user)
-        });
-    }
-
-    useMemo( () => {
-        const unregister = fetchIntercept.register({
-            request: async (url, config) => {
-
-                const skipModification= skipAuthHeaderUrls.filter(value => url.includes(value)).length > 0
-                if (!skipModification) {
-                    const accessToken = sessionStorage.getItem("access")
-                    let tokenExpired = false;
-                    if (accessToken) {
-                        try {
-                            const verifyResponse = await fetch(`${fetchDefaults.baseUrl}/dj-rest-auth/token/verify/`, {
-                                method: "POST",
-                                headers: fetchDefaults.headers,
-                                body: JSON.stringify({ token: accessToken })
-                            });
-                            const { status } = await verifyResponse;
-
-                            if (status === 200) {
-                                tokenExpired = false;
-                            }
-                            if (status === 401) {
-                                tokenExpired = true;
-                                return Promise.resolve(true)
-                            }
-                        } catch (error) {
-                            console.error("Error:", error);
+    useMemo(() => {
+        axiosReq.interceptors.request.use(
+            async (config) => {
+                try {
+                    await axios.post("/dj-rest-auth/token/refresh/");
+                } catch (err) {
+                    setCurrentUser((prevCurrentUser) => {
+                        if (prevCurrentUser) {
+                            navigate("/signin");
                         }
-                    }
-
-                    if (tokenExpired) {
-                        const refreshT = sessionStorage.getItem("refresh")
-                        refreshToken(refreshT);
-                    }
-
-                    let { headers } = config;
-                    headers = {
-                        ...headers,
-                        "Authorization": `Bearer ${sessionStorage.getItem("access")}`
-                    };
-                    config = {
-                        ...config,
-                        headers
-                    }
+                        return null;
+                    });
+                    return config;
                 }
-                return [url, config];
+                return config;
             },
+            (err) => {
+                return Promise.reject(err);
+            }
+        );
 
-            requestError: function (error) {
-                return Promise.reject(error);
-            },
-
-            response: function (response) {
-                return response;
-            },
-
-            responseError: function (error) {
-                return Promise.reject(error);
-            },
-        });
-    }, [currentUser]);
+        axiosRes.interceptors.response.use(
+            (response) => response,
+            async (err) => {
+                if (err.response?.status === 401) {
+                    try {
+                        await axios.post("/dj-rest-auth/token/refresh/");
+                    } catch (err) {
+                        setCurrentUser((prevCurrentUser) => {
+                            if (prevCurrentUser) {
+                                navigate("/signin");
+                            }
+                            return null;
+                        });
+                    }
+                    return axios(err.config);
+                }
+                return Promise.reject(err);
+            }
+        );
+    }, []);
 
     return (
         <CurrentUserContext.Provider value={currentUser}>

@@ -11,7 +11,7 @@ import {
 } from "react-bootstrap";
 import styles from "../styles/SignIn.module.css";
 import { Link, useNavigate } from "react-router-dom";
-import fetchDefaults from "../api/fetchDefaults";
+import axios from "axios";
 
 /**
  * User signup component. Captures username, password and password confirmation
@@ -25,9 +25,9 @@ const SignUp = () => {
     password2: "",
   });
   const [errors, setErrors] = useState({});
+  const navigate = useNavigate();
 
   const { username, password1, password2 } = signUpData;
-  const navigate = useNavigate();
 
   const handleChange = (event) => {
     setSignUpData({
@@ -39,22 +39,10 @@ const SignUp = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await fetch(`dj-rest-auth/registration/`, {
-        method: "POST",
-        headers: fetchDefaults.headers,
-        body: JSON.stringify(signUpData),
-      });
-
-      const { status } = response;
-      if (status === 400) {
-        const jsonData = await response.json();
-        setErrors(jsonData);
-      }
-      if (status === 204) {
-        navigate("/signin")
-      }
-    } catch (error) {
-      console.error("Error:", error);
+      await axios.post("/dj-rest-auth/registration/", signUpData);
+      navigate("/signin");
+    } catch (err) {
+      setErrors(err.response?.data);
     }
   };
 

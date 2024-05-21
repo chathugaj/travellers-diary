@@ -5,7 +5,6 @@ import {Link} from "react-router-dom";
 import {useCurrentUser, useSetCurrentUser} from "../contexts/CurrentUserContext";
 import Avatar from "./Avatar";
 import axios from "axios";
-import fetchDefaults from "../api/fetchDefaults";
 
 const NavBar = () => {
     const currentUser = useCurrentUser();
@@ -13,12 +12,11 @@ const NavBar = () => {
 
     const handleSignOut = async (event) => {
         try {
-            await fetch(`${fetchDefaults.baseUrl}/dj-rest-auth/logout`);
+            await axios.post("/dj-rest-auth/logout");
             setCurrentUser(null)
         } catch (error) {
             console.log(error);
         }
-
     }
 
     const loggedOutNavItems = <>

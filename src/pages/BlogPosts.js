@@ -1,7 +1,6 @@
-import React, {useEffect} from "react";
+import React from "react";
 import {ContentSearch, SearchResultContainer} from "../components";
-import fetchDefaults from "../api/fetchDefaults";
-import {SearchResultProvider, useSearchResult} from "../contexts/SearchContext";
+import {SearchResultProvider} from "../contexts/SearchContext";
 
 const BlogPosts = () => {
     return (

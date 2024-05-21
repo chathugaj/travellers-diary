@@ -6,11 +6,10 @@ import {
 
 } from "../components";
 import styles from "../styles/SearchResultContainer.module.css";
-import {fetchArticles, useSearchResult} from "../contexts/SearchContext";
+import {useSearchResult} from "../contexts/SearchContext";
 
 const SearchResultContainer = () => {
     const articles = useSearchResult()
-    console.log(articles)
 
     return (
         <Container className={styles.SearchResultContainer}>

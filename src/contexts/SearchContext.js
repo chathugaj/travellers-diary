@@ -1,5 +1,5 @@
 import {createContext, useContext, useEffect, useState} from "react";
-import fetchDefaults from "../api/fetchDefaults";
+import axios from "axios";
 
 export const SearchResultContext = createContext();
 export const SetSearchResultContext = createContext()
@@ -7,17 +7,16 @@ export const SetSearchResultContext = createContext()
 export const useSearchResult = () => useContext(SearchResultContext)
 export const useSetSearchResult = () => useContext(SetSearchResultContext)
 export async function fetchArticles(search) {
-    let url = `${fetchDefaults.baseUrl}/posts/`
+    let url = "/posts/"
     if (search) {
         url = `${url}?search=${search}`
     }
-    const response = await fetch(url, {
-        method: "GET",
-        headers: fetchDefaults.headers
-    });
-    const {status} = response;
-    const articles = await response.json();
-    return articles
+    try {
+        const { data } = await axios.get(url);
+        return data;
+    } catch (e) {
+        console.log(e)
+    }
 }
 
 export const SearchResultProvider = ({ children }) => {

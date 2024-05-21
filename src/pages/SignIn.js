@@ -11,8 +11,8 @@ import {
 } from "react-bootstrap";
 import styles from "../styles/SignIn.module.css";
 import {Link, useNavigate} from "react-router-dom";
-import fetchDefaults from "../api/fetchDefaults";
 import {useSetCurrentUser} from "../contexts/CurrentUserContext";
+import axios from "axios";
 
 
 const SignIn = () => {
@@ -37,26 +37,11 @@ const SignIn = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const response = await fetch(`${fetchDefaults.baseUrl}/dj-rest-auth/login/`, {
-        method: "POST",
-        headers: fetchDefaults.headers,
-        body: JSON.stringify(signInData),
-      });
-
-      const { status } = response;
-      if (status === 400) {
-        const jsonData = await response.json();
-        setErrors(jsonData);
-      }
-      if (status === 200) {
-        const jsonData = await response.json();
-        sessionStorage.setItem("access", jsonData?.access);
-        sessionStorage.setItem("refresh", jsonData?.refresh);
-        setCurrentUser(jsonData?.user)
-        navigate("/")
-      }
-    } catch (error) {
-      console.error("Error:", error);
+      const { data } = await axios.post("/dj-rest-auth/login/", signInData);
+      setCurrentUser(data.user);
+      navigate("/");
+    } catch (err) {
+      setErrors(err.response?.data);
     }
   };
 
