@@ -1,7 +1,6 @@
 import React from "react";
 import {Banner, ContentSearch, SearchResultContainer} from "../components";
 import {SearchResultProvider} from "../contexts/SearchContext";
-import {Image} from "react-bootstrap";
 
 const BlogPosts = () => {
     return (

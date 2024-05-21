@@ -1,18 +1,14 @@
 import React from "react";
 import styles from "../styles/Avatar.module.css";
+import Image from 'react-bootstrap/Image';
 
-const Avatar = ({ src, height = 45, text }) => {
+const Avatar = ({src, height = 45, text}) => {
     return (
         <span>
-      <img
-          className={styles.Avatar}
-          src={src}
-          height={height}
-          width={height}
-          alt="avatar"
-      />
+            {/* eslint-disable-next-line react/jsx-no-undef */}
+            <Image src={src} width={height} height={height} roundedCircle/>
             {text}
-    </span>
+        </span>
     );
 };
 

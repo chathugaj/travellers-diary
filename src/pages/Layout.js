@@ -1,4 +1,3 @@
-import {Banner} from "../components";
 import Nav from "../components/NavBar";
 import Footer from "../components/PageFooter";
 import React from "react";
