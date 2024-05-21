@@ -3,20 +3,17 @@ import { Col, Container, Row } from "react-bootstrap";
 import {
   SearchResultPaginator,
   SearchResultViewer,
-  SearchSidebar,
+
 } from "../components";
 import styles from "../styles/SearchResultContainer.module.css";
 
-function SearchResultContainer() {
+function SearchResultContainer({articles}) {
   return (
     <Container className={styles.SearchResultContainer}>
       <Row>
-        <Col md={4} lg={3}>
-          <SearchSidebar></SearchSidebar>
-        </Col>
-        <Col md={8} lg={9}>
-          <SearchResultViewer></SearchResultViewer>
-          <SearchResultPaginator></SearchResultPaginator>
+        <Col>
+          <SearchResultViewer articles={articles}></SearchResultViewer>
+          {/*<SearchResultPaginator data={articles}></SearchResultPaginator>*/}
         </Col>
       </Row>
     </Container>

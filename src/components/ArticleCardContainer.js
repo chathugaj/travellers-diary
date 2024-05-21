@@ -4,11 +4,11 @@ import ArticleCards from "./ArticleCards";
 import SectionHeader from "./SectionHeader";
 import styles from "../styles/ArticleCardContainer.module.css";
 
-const ArticleCardContainer = () => {
+const ArticleCardContainer = ({articles}) => {
   return (
-    <Container className={styles.CardContainer}>
+    <Container className={styles.CardContainer}  >
       <SectionHeader></SectionHeader>
-      <ArticleCards></ArticleCards>
+      <ArticleCards articles={articles}></ArticleCards>
     </Container>
   );
 };

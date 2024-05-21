@@ -3,15 +3,10 @@ import { Stack } from "react-bootstrap";
 import styles from "../styles/SearchResultViewer.module.css";
 import SearchResultItem from "./SearchResultItem";
 
-function SearchResultViewer() {
+function SearchResultViewer({articles}) {
   return (
     <Stack>
-      <SearchResultItem></SearchResultItem>
-      <SearchResultItem></SearchResultItem>
-      <SearchResultItem></SearchResultItem>
-      <SearchResultItem></SearchResultItem>
-      <SearchResultItem></SearchResultItem>
-      <SearchResultItem></SearchResultItem>
+        {articles.map((article, index) => (<SearchResultItem key={index} article={article}></SearchResultItem>))}
     </Stack>
   );
 }
