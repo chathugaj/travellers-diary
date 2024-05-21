@@ -7,6 +7,7 @@ import SignIn from "./pages/SignIn";
 import ForgotPassword from "./pages/ForgotPassword";
 import React from "react";
 import "./api/axiosDefaults";
+import PostPage from "./pages/PostPage";
 
 function App() {
 
@@ -16,6 +17,7 @@ function App() {
                 <Route path="/" element={<Layout/>}>
                     <Route index element={<Home/>}/>
                     <Route path="posts" element={<BlogPosts/>}/>
+                    <Route path="posts/:id" element={<PostPage/>}/>
                 </Route>
                 <Route path="signup" element={<SignUp/>}/>
                 <Route path="signin" element={<SignIn/>}/>

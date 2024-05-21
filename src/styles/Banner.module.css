@@ -1,14 +1,12 @@
 .Banner {
   margin-bottom: 50px;
-  background: no-repeat center center;
-  background-color: #6c757d;
-  background-attachment: scroll;
+  background: #6c757d no-repeat scroll center center;
   position: relative;
   background-size: cover;
 }
 
 .BannerImage {
-  background: url("../assets/image\ 2\ traveldi.jpeg") no-repeat center center;
+  background: url("../assets/common_banner.jpeg") no-repeat center center;
 }
 
 .SiteHeading {
@@ -20,6 +18,12 @@
   font-size: 3.5rem;
   letter-spacing: 1px;
   text-transform: uppercase;
+  color: var(--bs-white);
+}
+
+.H2 {
+  font-weight: 600;
+  margin: 10px 0 30px;
   color: var(--bs-white);
 }
 

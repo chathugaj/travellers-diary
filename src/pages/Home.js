@@ -1,13 +1,16 @@
 import React from "react";
-import {ArticleCardContainer, ContentSearch} from "../components";
+import {ArticleCardContainer, Banner, ContentSearch} from "../components";
 import {SearchResultProvider} from "../contexts/SearchContext";
 
 const Home = () => {
     return (
-        <SearchResultProvider>
-            <ContentSearch></ContentSearch>
-            <ArticleCardContainer></ArticleCardContainer>
-        </SearchResultProvider>
+        <>
+            <Banner title="Traverler's Diary"></Banner>
+            <SearchResultProvider>
+                <ContentSearch></ContentSearch>
+                <ArticleCardContainer></ArticleCardContainer>
+            </SearchResultProvider>
+        </>
     );
 };
 

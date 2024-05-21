@@ -1,13 +1,17 @@
 import React from "react";
-import {ContentSearch, SearchResultContainer} from "../components";
+import {Banner, ContentSearch, SearchResultContainer} from "../components";
 import {SearchResultProvider} from "../contexts/SearchContext";
+import {Image} from "react-bootstrap";
 
 const BlogPosts = () => {
     return (
-        <SearchResultProvider>
-            <ContentSearch></ContentSearch>
-            <SearchResultContainer ></SearchResultContainer>
-        </SearchResultProvider>
+        <>
+            <Banner title="Search The Diary"></Banner>
+            <SearchResultProvider>
+                <ContentSearch></ContentSearch>
+                <SearchResultContainer></SearchResultContainer>
+            </SearchResultProvider>
+        </>
     );
 };
 
