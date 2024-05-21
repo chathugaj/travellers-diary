@@ -6,7 +6,7 @@ import SearchResultItem from "./SearchResultItem";
 function SearchResultViewer({articles}) {
   return (
     <Stack>
-        {articles.map((article, index) => (<SearchResultItem key={index} article={article}></SearchResultItem>))}
+        {articles?.map((article, index) => (<SearchResultItem key={index} article={article}></SearchResultItem>))}
     </Stack>
   );
 }
