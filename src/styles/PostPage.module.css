@@ -1,0 +1,11 @@
+.Like {
+    color: black;
+}
+
+.Like:hover {
+    color: #2142b2;
+}
+
+.LikeOutline:hover {
+    color: dimgrey;
+}

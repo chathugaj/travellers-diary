@@ -2,6 +2,7 @@ import React from "react";
 import {Container, Row, Col, Form, Button} from "react-bootstrap";
 
 import styles from "../styles/ContentSearch.module.css";
+import appStyles from "../App.module.css";
 import {fetchArticles, useSetSearchResult} from "../contexts/SearchContext";
 
 const ContentSearch = () => {
@@ -34,7 +35,7 @@ const ContentSearch = () => {
                             <Button
                                 type="submit"
                                 variant="dark"
-                                className={styles.SearchButton}
+                                className={appStyles.CommonButton}
                             >
                                 <i className="bi bi-search"></i> Search
                             </Button>

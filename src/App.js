@@ -8,6 +8,7 @@ import ForgotPassword from "./pages/ForgotPassword";
 import React from "react";
 import "./api/axiosDefaults";
 import PostPage from "./pages/PostPage";
+import ContentEditor from "./pages/ContentEditor";
 
 function App() {
 
@@ -18,6 +19,7 @@ function App() {
                     <Route index element={<Home/>}/>
                     <Route path="posts" element={<BlogPosts/>}/>
                     <Route path="posts/:id" element={<PostPage/>}/>
+                    <Route path="editor" element={<ContentEditor/>} />
                 </Route>
                 <Route path="signup" element={<SignUp/>}/>
                 <Route path="signin" element={<SignIn/>}/>

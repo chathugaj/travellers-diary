@@ -1,12 +1,16 @@
 import React, {useEffect, useState} from 'react';
-import {Col, Container, Row} from "react-bootstrap";
+import {Col, Container, OverlayTrigger, Row, Tooltip} from "react-bootstrap";
 import {Banner} from "../components";
 import {useParams} from "react-router-dom";
 import {axiosReq} from "../api/axiosDefaults";
+import {useCurrentUser} from "../contexts/CurrentUserContext";
+import styles from "../styles/PostPage.module.css";
 
 const PostPage = () => {
     const {id} = useParams();
     const [post, setPost] = useState({results: []});
+    const [isOwner, setIsOwner] = useState(false);
+    const currentUser = useCurrentUser();
 
     useEffect(() => {
         const handleMount = async () => {
@@ -15,7 +19,6 @@ const PostPage = () => {
                     axiosReq.get(`/posts/${id}`),
                 ]);
                 setPost({results: [post]});
-                console.log(post);
             } catch (err) {
                 console.log(err);
             }
@@ -23,6 +26,13 @@ const PostPage = () => {
 
         handleMount();
     }, [id]);
+
+    useEffect(() => {
+        setIsOwner(currentUser?.username === post?.owner)
+    }, [currentUser, post]);
+
+    console.log(isOwner)
+    console.log(post?.results[0]?.like_id)
 
     return (
         <>
@@ -40,7 +50,33 @@ const PostPage = () => {
                     <Col md={3}></Col>
                     <Col md={3}></Col>
                     <Col md={3}></Col>
-                    <Col md={3}><i className="far fa-thumbs-up"></i></Col>
+                    <Col md={3}>
+                        {isOwner ? (
+                            <OverlayTrigger
+                                placement="top"
+                                overlay={<Tooltip>You can't like your own post!</Tooltip>}
+                            >
+                                <i className="bi bi-hand-thumbs-up"></i>
+                            </OverlayTrigger>
+                        ) : post?.results[0]?.like_id ? (
+                            <span onClick={() => {
+                            }}>
+                                <i className={`bi bi-hand-thumbs-up-fill ${styles.Like}`}></i>
+                            </span>
+                        ) : currentUser ? (
+                            <span onClick={() => {}}>
+                              <i className={`bi bi-hand-thumbs-up ${styles.LikeOutline}`}/>
+                            </span>
+                        ) : (
+                            <OverlayTrigger
+                                placement="top"
+                                overlay={<Tooltip>Log in to like posts!</Tooltip>}
+                            >
+                                <i className={`bi bi-hand-thumbs-up ${styles.Default}`}></i>
+                            </OverlayTrigger>
+                        )}
+                        {post?.results[0]?.likes_count}
+                    </Col>
                 </Row>
             </Container>
         </>

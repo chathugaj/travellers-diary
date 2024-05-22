@@ -1,3 +1,11 @@
 .App {
   font-family: "Open Sans", sans-serif;
 }
+
+.CommonButton {
+  font-weight: 800;
+  /* font-size: 14px; */
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border-radius: 0;
+}

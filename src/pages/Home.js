@@ -5,7 +5,7 @@ import {SearchResultProvider} from "../contexts/SearchContext";
 const Home = () => {
     return (
         <>
-            <Banner title="Traverler's Diary"></Banner>
+            <Banner title="Traverler's Diary" actionButton={true}></Banner>
             <SearchResultProvider>
                 <ContentSearch></ContentSearch>
                 <ArticleCardContainer></ArticleCardContainer>
