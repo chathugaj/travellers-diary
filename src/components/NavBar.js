@@ -5,10 +5,12 @@ import {Link} from "react-router-dom";
 import {useCurrentUser, useSetCurrentUser} from "../contexts/CurrentUserContext";
 import Avatar from "./Avatar";
 import axios from "axios";
+import {useCurrentProfile} from "../contexts/ProfileContext";
 
 const NavBar = () => {
     const currentUser = useCurrentUser();
     const setCurrentUser = useSetCurrentUser();
+    const currentProfile = useCurrentProfile();
 
     const handleSignOut = async (event) => {
         try {
@@ -32,8 +34,8 @@ const NavBar = () => {
         <Link className={styles.NavLink} to="/" onClick={handleSignOut}>
             SIGN OUT
         </Link>
-        <Link className={styles.NavLink} to={`/profiles/${currentUser?.profile_id}`}>
-            <Avatar src={currentUser?.profile_image} height={40} />
+        <Link className={styles.NavLink} to={`/profiles/${currentProfile?.id}`}>
+            <Avatar src={currentProfile?.image} height={40} />
         </Link>
     </>
 

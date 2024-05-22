@@ -29,7 +29,7 @@ const ContentSearch = () => {
                     <Row>
                         <Col md={9} lg={10} xl={10}>
                             <Form.Group className="mb-3" controlId="username">
-                                <Form.Label >image</Form.Label>
+                                <Form.Label className="d-none" >searchText</Form.Label>
                                 <Form.Control type="text" className={styles.SearchInput} name="searchText"
                                               value={searchText} onChange={handleChange}/>
                             </Form.Group>

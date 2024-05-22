@@ -7,7 +7,6 @@ const Avatar = ({src, height = 45, text}) => {
         <span>
             {/* eslint-disable-next-line react/jsx-no-undef */}
             <Image src={src} width={height} height={height} roundedCircle/>
-            {text}
         </span>
     );
 };

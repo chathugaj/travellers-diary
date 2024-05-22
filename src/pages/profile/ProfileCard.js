@@ -9,7 +9,7 @@ const ProfileCard = ({profile}) => {
             <Card className={styles.ProfileCard}>
                 <ListGroup className="text-center" variant="flush">
                     <ListGroup.Item>
-                        <Image src={profile?.image} roundedCircle fluid></Image>
+                        <Image src={profile?.image} thumbnail fluid></Image>
                         <p className={`${styles.ProfileText} ${styles.ProfileUpperCase}`}>{profile?.owner}</p>
                     </ListGroup.Item>
                     <ListGroup.Item>
