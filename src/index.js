@@ -6,13 +6,16 @@ import "bootstrap-icons/font/bootstrap-icons.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import {CurrentUserProvider} from "./contexts/CurrentUserContext";
+import {CurrentProfileProvider} from "./contexts/ProfileContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
 root.render(
     <React.StrictMode>
         <CurrentUserProvider>
-            <App/>
+            <CurrentProfileProvider>
+                <App/>
+            </CurrentProfileProvider>
         </CurrentUserProvider>
     </React.StrictMode>
 );

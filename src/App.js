@@ -9,6 +9,7 @@ import React from "react";
 import "./api/axiosDefaults";
 import PostPage from "./pages/PostPage";
 import ContentEditor from "./pages/ContentEditor";
+import Profile from "./pages/Profile";
 
 function App() {
 
@@ -20,6 +21,7 @@ function App() {
                     <Route path="posts" element={<BlogPosts/>}/>
                     <Route path="posts/:id" element={<PostPage/>}/>
                     <Route path="editor" element={<ContentEditor/>} />
+                    <Route path="profiles/:id" element={<Profile/>}/>
                 </Route>
                 <Route path="signup" element={<SignUp/>}/>
                 <Route path="signin" element={<SignIn/>}/>

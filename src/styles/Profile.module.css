@@ -1,0 +1,23 @@
+.ProfileContainer {
+    margin: 100px 50px;
+}
+
+.ProfileRowMargin {
+    margin: 50px
+}
+
+.ProfileContentMargin {
+    margin: 100px 50px;
+}
+
+.ProfileText {
+    font-weight: 800;
+}
+
+.ProfileUpperCase{
+    text-transform: uppercase;
+}
+
+.MetaLink {
+    text-decoration: none;
+}

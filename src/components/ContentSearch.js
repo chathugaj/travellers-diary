@@ -1,12 +1,15 @@
-import React from "react";
+import React, {useState} from "react";
 import {Container, Row, Col, Form, Button} from "react-bootstrap";
 
 import styles from "../styles/ContentSearch.module.css";
 import appStyles from "../App.module.css";
 import {fetchArticles, useSetSearchResult} from "../contexts/SearchContext";
+import {useParams, useSearchParams} from "react-router-dom";
 
 const ContentSearch = () => {
-    const [searchText, setSearchText] = React.useState("");
+    let [searchParams, setSearchParams] = useSearchParams();
+    let search = searchParams.get("search") ? searchParams.get("search") : "";
+    const [searchText, setSearchText] = useState(search);
     const setSearchResult = useSetSearchResult();
 
     const handleSubmit = (event) => {
@@ -26,7 +29,7 @@ const ContentSearch = () => {
                     <Row>
                         <Col md={9} lg={10} xl={10}>
                             <Form.Group className="mb-3" controlId="username">
-                                <Form.Label className="d-none">searchText</Form.Label>
+                                <Form.Label >image</Form.Label>
                                 <Form.Control type="text" className={styles.SearchInput} name="searchText"
                                               value={searchText} onChange={handleChange}/>
                             </Form.Group>

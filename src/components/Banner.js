@@ -4,14 +4,16 @@ import styles from "../styles/Banner.module.css";
 import appStyles from "../App.module.css";
 import defaultBanner from "../assets/common_banner.jpeg"
 import {Avatar} from "./index";
-import {formatToReadableDate} from "../helpers/dateTimeHelper";
+import {formatToReadableDate} from "../helpers/commonHelper";
 import {useNavigate} from "react-router-dom";
+import {useCurrentUser} from "../contexts/CurrentUserContext";
 
 const Banner = ({banner, title, subTitle, authorProfileImage, authorName, authorUserName, dateTime, actionButton}) => {
-    const navigation = useNavigate();
+    const navigate = useNavigate();
+    const currentUser = useCurrentUser();
     const bgImage = banner ? banner : defaultBanner;
     const handleButtonClick = (event) => {
-        navigation("/editor")
+        currentUser ? navigate("/editor") : navigate("/signin");
     }
 
     return (
