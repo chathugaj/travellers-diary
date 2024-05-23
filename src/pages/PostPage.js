@@ -83,7 +83,7 @@ const PostPage = () => {
                                 <i className={`bi bi-hand-thumbs-up ${styles.Default} ${styles.LikeCommon}`}></i>
                             </OverlayTrigger>
                         )}
-                        {post?.results[0]?.likes_count}
+                        <span className={styles.LikeCount}>({post?.results[0]?.likes_count})</span>
                     </Col>
                 </Row>
             </Container>

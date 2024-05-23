@@ -3,6 +3,11 @@
     font-size: 2rem;
 }
 
+.LikeCount {
+    font-size: 1rem;
+    color: grey;
+}
+
 .Like {
     color: dimgrey;
 }
