@@ -2,24 +2,25 @@ import React, {useEffect, useState} from 'react';
 import {Col, Container, OverlayTrigger, Row, Tooltip} from "react-bootstrap";
 import {Banner} from "../components";
 import {useParams} from "react-router-dom";
-import {addCsrfTokenHeaders, axiosReq} from "../api/axiosDefaults";
 import {useCurrentUser} from "../contexts/CurrentUserContext";
 import styles from "../styles/PostPage.module.css";
-import axios from "../api/axiosDefaults";
+import axios, {axiosReq} from "../api/axiosDefaults";
 
 const PostPage = () => {
     const {id} = useParams();
     const [post, setPost] = useState({results: []});
     const [isOwner, setIsOwner] = useState(false);
+    const [likeClicked, setLikeClicked] = useState(false);
     const currentUser = useCurrentUser();
 
+    console.log(likeClicked);
     useEffect(() => {
-        axios.interceptors.request.use(addCsrfTokenHeaders());
         const handleMount = async () => {
             try {
                 const [{data: post}] = await Promise.all([
-                    axiosReq.get(`/posts/${id}`),
+                    axios.get(`/posts/${id}`),
                 ]);
+                console.log(post);
                 setPost({results: [post]});
             } catch (err) {
                 console.log(err);
@@ -27,14 +28,11 @@ const PostPage = () => {
         };
 
         handleMount();
-    }, [id]);
+    }, [id, likeClicked]);
 
     useEffect(() => {
         setIsOwner(currentUser?.username === post?.owner)
     }, [currentUser, post]);
-
-    console.log(isOwner)
-    console.log(post?.results[0]?.like_id)
 
     return (
         <>
@@ -61,20 +59,28 @@ const PostPage = () => {
                                 <i className="bi bi-hand-thumbs-up"></i>
                             </OverlayTrigger>
                         ) : post?.results[0]?.like_id ? (
-                            <span onClick={() => {
+                            <span onClick={async () => {
+                                const { status } = await axios.delete(`/likes/${post?.results[0]?.like_id}`)
+                                setLikeClicked(!(status === 204))
                             }}>
-                                <i className={`bi bi-hand-thumbs-up-fill ${styles.Like}`}></i>
+                                <i className={`bi bi-hand-thumbs-up-fill ${styles.Like} ${styles.LikeCommon}`}></i>
                             </span>
                         ) : currentUser ? (
-                            <span onClick={() => {}}>
-                              <i className={`bi bi-hand-thumbs-up ${styles.LikeOutline}`}/>
+                            <span onClick={async () => {
+                                const { status } = await axios.post(`/likes/`, {
+                                    post: post?.results[0]?.id,
+                                    owner: currentUser?.username
+                                })
+                                setLikeClicked(status === 201)
+                            }}>
+                              <i className={`bi bi-hand-thumbs-up ${styles.LikeOutline} ${styles.LikeCommon}`}/>
                             </span>
                         ) : (
                             <OverlayTrigger
                                 placement="top"
                                 overlay={<Tooltip>Log in to like posts!</Tooltip>}
                             >
-                                <i className={`bi bi-hand-thumbs-up ${styles.Default}`}></i>
+                                <i className={`bi bi-hand-thumbs-up ${styles.Default} ${styles.LikeCommon}`}></i>
                             </OverlayTrigger>
                         )}
                         {post?.results[0]?.likes_count}

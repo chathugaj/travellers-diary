@@ -1,11 +1,16 @@
+.LikeCommon {
+    cursor: pointer;
+    font-size: 2rem;
+}
+
 .Like {
-    color: black;
+    color: dimgrey;
 }
 
 .Like:hover {
-    color: #2142b2;
+    color: black;
 }
 
 .LikeOutline:hover {
-    color: dimgrey;
+    color: black;
 }

@@ -6,7 +6,7 @@ function SearchResultItem({article}) {
   return (
     <div className={styles.SearchItem}>
       <div>
-        <Link className={styles.SearchItemLink} to={`${article.id}`}>
+        <Link className={styles.SearchItemLink} to={`${article?.id}`}>
             {article?.title}
         </Link>
       </div>

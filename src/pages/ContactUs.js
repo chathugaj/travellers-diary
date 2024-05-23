@@ -16,9 +16,14 @@ const ContactUs = () => {
 
     const handleSubmit = async (event) => {
         event.preventDefault();
+        console.log(event);
+        console.log(this)
         try {
             const {data} = await axios.post("/contacts/", contactUsData);
-            setContactUsData(data);
+            setContactUsData({
+                reason: "",
+                message: ""
+            });
             setShowToast(true)
         } catch (err) {
             setErrors(err.response?.data);
@@ -35,7 +40,7 @@ const ContactUs = () => {
         <Container fluid className={appStyles.ContentContainer}>
             <SuccessToast show={showToast} message="Your message is sent successfully"></SuccessToast>
             <SectionHeader title="Contact Us"></SectionHeader>
-            <Form onSubmit={handleSubmit}>
+            <Form onSubmit={handleSubmit.bind(this)}>
                 <Form.Group className="mb-3" controlId="reason">
                     <Form.Label className="d-none">reason</Form.Label>
                     <Form.Control type="reason" name="reason" placeholder="Reason"

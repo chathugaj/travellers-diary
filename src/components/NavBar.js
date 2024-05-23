@@ -61,6 +61,9 @@ const NavBar = () => {
                         <Link className={styles.NavLink} to="/posts">
                             BLOG POSTS
                         </Link>
+                        <Link className={styles.NavLink} to="/contactus">
+                            CONTACTUS US
+                        </Link>
                         {currentUser ? loggedInNavItems : loggedOutNavItems}
                     </Nav>
                 </Navbar.Collapse>

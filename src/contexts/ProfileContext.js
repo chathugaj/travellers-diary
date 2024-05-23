@@ -1,5 +1,5 @@
 import {createContext, useContext, useEffect, useState} from "react";
-import {axiosRes} from "../api/axiosDefaults";
+import axios, {axiosRes} from "../api/axiosDefaults";
 import {useCurrentUser} from "./CurrentUserContext";
 
 export const CurrentProfileContext = createContext();

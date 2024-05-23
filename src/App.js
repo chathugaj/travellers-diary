@@ -23,7 +23,7 @@ function App() {
                     <Route path="posts/:id" element={<PostPage/>}/>
                     <Route path="editor" element={<ContentEditor/>} />
                     <Route path="profiles/:id" element={<Profile/>}/>
-                    <Route path="contact_us" element={<ContactUs/>}/>
+                    <Route path="contactus" element={<ContactUs/>}/>
                 </Route>
                 <Route path="signup" element={<SignUp/>}/>
                 <Route path="signin" element={<SignIn/>}/>
