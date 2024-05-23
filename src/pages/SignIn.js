@@ -12,7 +12,7 @@ import {
 import styles from "../styles/SignIn.module.css";
 import {Link, useNavigate} from "react-router-dom";
 import {useSetCurrentUser} from "../contexts/CurrentUserContext";
-import axios from "axios";
+import axios from "../api/axiosDefaults";
 
 
 const SignIn = () => {

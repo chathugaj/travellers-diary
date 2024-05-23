@@ -11,7 +11,7 @@ import {
 } from "react-bootstrap";
 import styles from "../styles/SignIn.module.css";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "axios";
+import axios from "../api/axiosDefaults";
 
 /**
  * User signup component. Captures username, password and password confirmation

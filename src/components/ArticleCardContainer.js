@@ -10,7 +10,7 @@ const ArticleCardContainer = () => {
 
     return (
         <Container className={styles.CardContainer}>
-            <SectionHeader></SectionHeader>
+            <SectionHeader title="Latest Posts"></SectionHeader>
             <ArticleCards articles={articles}></ArticleCards>
         </Container>
     );

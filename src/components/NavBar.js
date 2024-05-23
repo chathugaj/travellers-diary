@@ -4,7 +4,7 @@ import styles from "../styles/NavBar.module.css";
 import {Link} from "react-router-dom";
 import {useCurrentUser, useSetCurrentUser} from "../contexts/CurrentUserContext";
 import Avatar from "./Avatar";
-import axios from "axios";
+import axios, {addCsrfTokenHeaders} from "../api/axiosDefaults";
 import {useCurrentProfile} from "../contexts/ProfileContext";
 
 const NavBar = () => {
@@ -31,7 +31,7 @@ const NavBar = () => {
     </>
 
     const loggedInNavItems = <>
-        <Link className={styles.NavLink} to="/" onClick={handleSignOut}>
+        <Link className={` ${styles.NavLink} justify-content-center`} to="/" onClick={handleSignOut}>
             SIGN OUT
         </Link>
         <Link className={styles.NavLink} to={`/profiles/${currentProfile?.id}`}>
@@ -49,7 +49,7 @@ const NavBar = () => {
             expand="lg"
         >
             <Container>
-                <Navbar.Brand className={styles.NavTitle} href="#">
+                <Navbar.Brand className={styles.NavTitle} href="/">
                     TRAVELER'S DIARY
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="navbarScroll"/>

@@ -2,9 +2,10 @@ import React, {useEffect, useState} from 'react';
 import {Col, Container, OverlayTrigger, Row, Tooltip} from "react-bootstrap";
 import {Banner} from "../components";
 import {useParams} from "react-router-dom";
-import {axiosReq} from "../api/axiosDefaults";
+import {addCsrfTokenHeaders, axiosReq} from "../api/axiosDefaults";
 import {useCurrentUser} from "../contexts/CurrentUserContext";
 import styles from "../styles/PostPage.module.css";
+import axios from "../api/axiosDefaults";
 
 const PostPage = () => {
     const {id} = useParams();
@@ -13,6 +14,7 @@ const PostPage = () => {
     const currentUser = useCurrentUser();
 
     useEffect(() => {
+        axios.interceptors.request.use(addCsrfTokenHeaders());
         const handleMount = async () => {
             try {
                 const [{data: post}] = await Promise.all([

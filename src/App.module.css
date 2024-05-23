@@ -9,3 +9,7 @@
   text-transform: uppercase;
   border-radius: 0;
 }
+
+.ContentContainer {
+  margin: 100px 50px;
+}

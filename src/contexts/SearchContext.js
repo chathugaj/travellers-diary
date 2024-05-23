@@ -1,5 +1,5 @@
 import {createContext, useContext, useEffect, useState} from "react";
-import axios from "axios";
+import axios from "../api/axiosDefaults";
 
 export const SearchResultContext = createContext();
 export const SetSearchResultContext = createContext()

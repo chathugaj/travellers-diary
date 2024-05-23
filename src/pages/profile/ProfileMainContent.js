@@ -1,8 +1,7 @@
-import {Alert, Button, Card, Col, Form, Image, ListGroup, Row, Tab, Tabs} from "react-bootstrap";
+import {Alert, Button, Col, Form, Tab, Tabs} from "react-bootstrap";
 import React, {useEffect, useState} from "react";
 import appStyles from "../../App.module.css";
-import styles from "../../styles/Profile.module.css"
-import axios from "axios";
+import axios from "../../api/axiosDefaults";
 import {useSetCurrentProfile} from "../../contexts/ProfileContext";
 
 const ProfileMainContent = ({profile, currentUser}) => {
@@ -85,6 +84,7 @@ const ProfileMainContent = ({profile, currentUser}) => {
                                           onChange={handleChange} readOnly={!isOwner}
                                           disabled={!isOwner}>
                             </Form.Control>
+
                         </Form.Group>
                         {errors.name?.map((message, idx) => (
                             <Alert variant="warning" key={idx}>
@@ -92,6 +92,11 @@ const ProfileMainContent = ({profile, currentUser}) => {
                             </Alert>
                         ))}
                         <Button variant="dark" type="submit" className={appStyles.CommonButton}>Update</Button>
+                        {errors.non_field_errors?.map((message, idx) => (
+                            <Alert variant="warning" key={idx}>
+                                {message}
+                            </Alert>
+                        ))}
                     </Form>
                 </Tab>
             </Tabs>

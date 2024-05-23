@@ -10,6 +10,7 @@ import "./api/axiosDefaults";
 import PostPage from "./pages/PostPage";
 import ContentEditor from "./pages/ContentEditor";
 import Profile from "./pages/Profile";
+import ContactUs from "./pages/ContactUs";
 
 function App() {
 
@@ -22,6 +23,7 @@ function App() {
                     <Route path="posts/:id" element={<PostPage/>}/>
                     <Route path="editor" element={<ContentEditor/>} />
                     <Route path="profiles/:id" element={<Profile/>}/>
+                    <Route path="contact_us" element={<ContactUs/>}/>
                 </Route>
                 <Route path="signup" element={<SignUp/>}/>
                 <Route path="signin" element={<SignIn/>}/>

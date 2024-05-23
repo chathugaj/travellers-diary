@@ -1,10 +1,18 @@
 import {Button, Col, Container, Form, Row} from "react-bootstrap";
-import {useState} from "react";
-import axios from "axios";
+import {useEffect, useState} from "react";
+import axios from "../api/axiosDefaults";
 import appStyles from "../App.module.css"
 import styles from "../styles/ContentEditor.module.css"
+import {useCurrentUser} from "../contexts/CurrentUserContext";
+import {useNavigate} from "react-router-dom";
 
 const ContentEditor = () => {
+    const currentUser = useCurrentUser()
+    const navigate = useNavigate()
+   if (!currentUser) {
+       navigate("/signin")
+   }
+
     const [editorData, setEditorData] = useState({
         title: "",
         sub_title: "",
