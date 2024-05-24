@@ -19,3 +19,15 @@
 .LikeOutline:hover {
     color: black;
 }
+
+.CommentContainer {
+    margin-top: 50px;
+}
+
+.CommentIconButton {
+    font-size: 1rem;
+}
+
+.Info {
+    padding: 5px
+}

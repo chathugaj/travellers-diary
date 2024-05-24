@@ -10,6 +10,14 @@
   border-radius: 0;
 }
 
+.CommonButtonSecondary {
+  font-weight: 400;
+  /* font-size: 14px; */
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  border-radius: 0;
+}
+
 .ContentContainer {
   margin: 100px 50px;
 }

@@ -5,30 +5,39 @@ import {useParams} from "react-router-dom";
 import {useCurrentUser} from "../contexts/CurrentUserContext";
 import styles from "../styles/PostPage.module.css";
 import axios, {axiosReq} from "../api/axiosDefaults";
+import * as PropTypes from "prop-types";
+import PostContent from "./post/PostContent";
+import LikePost from "./post/LikePost";
+import CommentForm from "./post/CommentForm";
+import {useCurrentProfile} from "../contexts/ProfileContext";
+import CommentList from "./post/CommentList";
 
 const PostPage = () => {
     const {id} = useParams();
     const [post, setPost] = useState({results: []});
+    const [comments, setComments] = useState([]);
     const [isOwner, setIsOwner] = useState(false);
     const [likeClicked, setLikeClicked] = useState(false);
+    const [commentUpdated, setCommentUpdated] = useState(false);
     const currentUser = useCurrentUser();
+    const currentProfile = useCurrentProfile();
 
-    console.log(likeClicked);
     useEffect(() => {
         const handleMount = async () => {
             try {
-                const [{data: post}] = await Promise.all([
+                const [{data: post}, {data: commentsData}] = await Promise.all([
                     axios.get(`/posts/${id}`),
+                    axios.get(`/comments/?post=${id}`),
                 ]);
-                console.log(post);
                 setPost({results: [post]});
+                setComments(commentsData);
             } catch (err) {
                 console.log(err);
             }
         };
 
         handleMount();
-    }, [id, likeClicked]);
+    }, [id, likeClicked, commentUpdated]);
 
     useEffect(() => {
         setIsOwner(currentUser?.username === post?.owner)
@@ -41,51 +50,13 @@ const PostPage = () => {
                     authorProfileImage={post?.results[0]?.profile_image}
                     dateTime={post?.results[0]?.created_at}></Banner>
             <Container fluid>
-                <Row>
-                    <Col md={10} lg={8} className="mx-auto">
-                        <p>{post?.results[0]?.body}</p>
-                    </Col>
-                </Row>
-                <Row>
-                    <Col md={3}></Col>
-                    <Col md={3}></Col>
-                    <Col md={3}></Col>
-                    <Col md={3}>
-                        {isOwner ? (
-                            <OverlayTrigger
-                                placement="top"
-                                overlay={<Tooltip>You can't like your own post!</Tooltip>}
-                            >
-                                <i className="bi bi-hand-thumbs-up"></i>
-                            </OverlayTrigger>
-                        ) : post?.results[0]?.like_id ? (
-                            <span onClick={async () => {
-                                const { status } = await axios.delete(`/likes/${post?.results[0]?.like_id}`)
-                                setLikeClicked(!(status === 204))
-                            }}>
-                                <i className={`bi bi-hand-thumbs-up-fill ${styles.Like} ${styles.LikeCommon}`}></i>
-                            </span>
-                        ) : currentUser ? (
-                            <span onClick={async () => {
-                                const { status } = await axios.post(`/likes/`, {
-                                    post: post?.results[0]?.id,
-                                    owner: currentUser?.username
-                                })
-                                setLikeClicked(status === 201)
-                            }}>
-                              <i className={`bi bi-hand-thumbs-up ${styles.LikeOutline} ${styles.LikeCommon}`}/>
-                            </span>
-                        ) : (
-                            <OverlayTrigger
-                                placement="top"
-                                overlay={<Tooltip>Log in to like posts!</Tooltip>}
-                            >
-                                <i className={`bi bi-hand-thumbs-up ${styles.Default} ${styles.LikeCommon}`}></i>
-                            </OverlayTrigger>
-                        )}
-                        <span className={styles.LikeCount}>({post?.results[0]?.likes_count})</span>
-                    </Col>
-                </Row>
+                <PostContent post={post?.results[0]}/>
+                <LikePost isOwner={isOwner} post={post?.results[0]} currentUser={currentUser}
+                          setLikeClicked={setLikeClicked}/>
+                <CommentForm post={post?.results[0]} currentUser={currentUser}
+                             currentProfile={currentProfile} setCommentUpdated={setCommentUpdated} >
+                </CommentForm>
+                <CommentList comments={comments} currentUser={currentUser} />
             </Container>
         </>
     )
