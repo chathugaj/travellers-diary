@@ -21,8 +21,20 @@ const CommentList = ({ comments, currentUser }) => {
                                     </Link>
                                 </Col>
                                 <Col md={11} sm={11} lg={11}>
-                                    <div>{comment?.content}</div>
-
+                                    <Row>
+                                        <Col md={11}>
+                                            <div>{comment?.content}</div>
+                                        </Col>
+                                        <Col>
+                                            {
+                                                currentUser ?
+                                                    (<>
+                                                        <Button variant="outline-dark"><i className="bi bi-pencil-square"></i></Button>
+                                                        <Button variant="outline-danger"><i className="bi bi-trash3"></i></Button>
+                                                    </>) : <></>
+                                            }
+                                        </Col>
+                                    </Row>
                                 </Col>
                             </Row>
                         </ListGroup.Item>
