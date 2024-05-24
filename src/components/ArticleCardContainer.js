@@ -6,12 +6,12 @@ import styles from "../styles/ArticleCardContainer.module.css";
 import {useSearchResult} from "../contexts/SearchContext";
 
 const ArticleCardContainer = () => {
-    const articles = useSearchResult()
+    const {results} = useSearchResult()
 
     return (
         <Container className={styles.CardContainer}>
             <SectionHeader title="Latest Posts"></SectionHeader>
-            <ArticleCards articles={articles}></ArticleCards>
+            <ArticleCards articles={results}></ArticleCards>
         </Container>
     );
 };

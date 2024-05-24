@@ -62,7 +62,7 @@ const NavBar = () => {
                             BLOG POSTS
                         </Link>
                         <Link className={styles.NavLink} to="/contactus">
-                            CONTACTUS US
+                            CONTACT US
                         </Link>
                         {currentUser ? loggedInNavItems : loggedOutNavItems}
                     </Nav>

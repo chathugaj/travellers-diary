@@ -9,13 +9,13 @@ import styles from "../styles/SearchResultContainer.module.css";
 import {useSearchResult} from "../contexts/SearchContext";
 
 const SearchResultContainer = () => {
-    const articles = useSearchResult()
+    const {results} = useSearchResult()
 
     return (
         <Container className={styles.SearchResultContainer}>
             <Row>
                 <Col>
-                    <SearchResultViewer articles={articles}></SearchResultViewer>
+                    <SearchResultViewer articles={results}></SearchResultViewer>
                     {/*<SearchResultPaginator data={articles}></SearchResultPaginator>*/}
                 </Col>
             </Row>

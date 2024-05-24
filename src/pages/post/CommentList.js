@@ -15,17 +15,17 @@ const CommentList = ({ comments, currentUser }) => {
                     <Col md={8}>
                         <ListGroup.Item key={index}>
                             <Row>
-                                <Col md={1} sm={1} lg={1}>
+                                {/*<Col md={1} sm={1} lg={1}>*/}
                                     <Link to={comment?.profile_id}>
                                         <Avatar src={comment?.profile_image} alt="avatar" />
                                     </Link>
-                                </Col>
-                                <Col md={11} sm={11} lg={11}>
-                                    <Row>
-                                        <Col md={11}>
+                                {/*</Col>*/}
+                                {/*<Col md={11} sm={11} lg={11}>*/}
+                                {/*    <Row>*/}
+                                {/*        <Col md={11}>*/}
                                             <div>{comment?.content}</div>
-                                        </Col>
-                                        <Col>
+                                        {/*</Col>*/}
+                                        {/*<Col>*/}
                                             {
                                                 currentUser ?
                                                     (<>
@@ -33,9 +33,9 @@ const CommentList = ({ comments, currentUser }) => {
                                                         <Button variant="outline-danger"><i className="bi bi-trash3"></i></Button>
                                                     </>) : <></>
                                             }
-                                        </Col>
-                                    </Row>
-                                </Col>
+                                        {/*</Col>*/}
+                                    {/*</Row>*/}
+                                {/*</Col>*/}
                             </Row>
                         </ListGroup.Item>
                     </Col>

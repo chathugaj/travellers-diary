@@ -20,11 +20,11 @@ export async function fetchArticles(search) {
 }
 
 export const SearchResultProvider = ({ children }) => {
-    const [searchResult, setSearchResult] = useState([])
+    const [searchResult, setSearchResult] = useState({results:[]})
 
     useEffect( () => {
         fetchArticles()
-            .then(articles => setSearchResult(articles))
+            .then(result => setSearchResult(result))
     }, []);
 
     return (
