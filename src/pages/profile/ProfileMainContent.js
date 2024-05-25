@@ -3,6 +3,7 @@ import React, {useEffect, useState} from "react";
 import appStyles from "../../App.module.css";
 import axios from "../../api/axiosDefaults";
 import {useSetCurrentProfile} from "../../contexts/ProfileContext";
+import SuccessToast from "../../components/SuccessToast";
 
 const ProfileMainContent = ({profile, currentUser}) => {
 
@@ -13,6 +14,7 @@ const ProfileMainContent = ({profile, currentUser}) => {
     const setCurrentProfile = useSetCurrentProfile();
     const [imageInput, setImageInput] = useState(null);
     const [errors, setErrors] = useState({});
+    const [displayToast, setDisplayToast] = useState(false)
 
     useEffect(() => {
         setImageInput(document.getElementById("imageInput"));
@@ -40,6 +42,7 @@ const ProfileMainContent = ({profile, currentUser}) => {
                 }
             });
             setCurrentProfile(data);
+            setDisplayToast(true)
         } catch (err) {
             setErrors(err.response?.data);
         }
@@ -57,6 +60,7 @@ const ProfileMainContent = ({profile, currentUser}) => {
 
     return (
         <Col xs={12} md={6} sm={6} lg={8}>
+            <SuccessToast message="Profile update successful" display={displayToast} ></SuccessToast>
             <Tabs defaultActiveKey="profile"
                   id="profile-tabs"
                   className="mb-3">
