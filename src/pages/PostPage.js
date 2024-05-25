@@ -1,11 +1,9 @@
 import React, {useEffect, useState} from 'react';
-import {Col, Container, OverlayTrigger, Row, Tooltip} from "react-bootstrap";
+import {Container} from "react-bootstrap";
 import {Banner} from "../components";
 import {useParams} from "react-router-dom";
 import {useCurrentUser} from "../contexts/CurrentUserContext";
-import styles from "../styles/PostPage.module.css";
-import axios, {axiosReq} from "../api/axiosDefaults";
-import * as PropTypes from "prop-types";
+import axios from "../api/axiosDefaults";
 import PostContent from "./post/PostContent";
 import LikePost from "./post/LikePost";
 import CommentForm from "./post/CommentForm";
@@ -15,7 +13,7 @@ import CommentList from "./post/CommentList";
 const PostPage = () => {
     const {id} = useParams();
     const [post, setPost] = useState({results: []});
-    const [comments, setComments] = useState([]);
+    // const [comments, setComments] = useState({results: []});
     const [isOwner, setIsOwner] = useState(false);
     const [likeClicked, setLikeClicked] = useState(false);
     const [commentUpdated, setCommentUpdated] = useState(false);
@@ -25,12 +23,12 @@ const PostPage = () => {
     useEffect(() => {
         const handleMount = async () => {
             try {
-                const [{data: post}, {data: commentsData}] = await Promise.all([
+                const [{data: post}] = await Promise.all([
                     axios.get(`/posts/${id}`),
-                    axios.get(`/comments/?post=${id}`),
+                    // axios.get(`/comments/?post=${id}&page=1`),
                 ]);
                 setPost({results: [post]});
-                setComments(commentsData);
+                // setComments(commentsData);
             } catch (err) {
                 console.log(err);
             }
@@ -56,7 +54,7 @@ const PostPage = () => {
                 <CommentForm post={post?.results[0]} currentUser={currentUser}
                              currentProfile={currentProfile} setCommentUpdated={setCommentUpdated} >
                 </CommentForm>
-                {/*<CommentList comments={comments} currentUser={currentUser} />*/}
+                <CommentList currentUser={currentUser} post={post?.results[0]} />
             </Container>
         </>
     )
