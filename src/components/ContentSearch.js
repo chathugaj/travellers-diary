@@ -16,7 +16,6 @@ const ContentSearch = ( { forwardTo } ) => {
     useEffect(() => {
         (async () => {
             const response = await fetchArticles(search)
-            console.log(response)
             setSearchResult(response)
         })()
     }, [search]);

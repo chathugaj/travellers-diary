@@ -4,7 +4,7 @@ import styles from "../styles/NavBar.module.css";
 import {Link} from "react-router-dom";
 import {useCurrentUser, useSetCurrentUser} from "../contexts/CurrentUserContext";
 import Avatar from "./Avatar";
-import axios, {addCsrfTokenHeaders} from "../api/axiosDefaults";
+import axios from "../api/axiosDefaults";
 import {useCurrentProfile} from "../contexts/ProfileContext";
 
 const NavBar = () => {
@@ -54,7 +54,7 @@ const NavBar = () => {
                 </Navbar.Brand>
                 <Navbar.Toggle aria-controls="navbarScroll"/>
                 <Navbar.Collapse id="navbarScroll" className="justify-content-end">
-                    <Nav className="ml-auto my-2 my-lg-0" navbarScroll>
+                    <Nav className={`ml-auto my-2 my-lg-0  ${styles.NavBarItemCenterAlign}`} navbarScroll>
                         <Link className={styles.NavLink} to="/">
                             HOME
                         </Link>

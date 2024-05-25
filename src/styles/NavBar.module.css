@@ -18,3 +18,7 @@
 .P0 {
   padding: 0;
 }
+
+.NavBarItemCenterAlign {
+  align-items: center;
+}

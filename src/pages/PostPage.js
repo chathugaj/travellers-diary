@@ -56,7 +56,7 @@ const PostPage = () => {
                 <CommentForm post={post?.results[0]} currentUser={currentUser}
                              currentProfile={currentProfile} setCommentUpdated={setCommentUpdated} >
                 </CommentForm>
-                <CommentList comments={comments} currentUser={currentUser} />
+                {/*<CommentList comments={comments} currentUser={currentUser} />*/}
             </Container>
         </>
     )

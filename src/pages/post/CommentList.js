@@ -9,7 +9,7 @@ const CommentList = ({ comments, currentUser }) => {
     console.log(comments)
     return (
         <ListGroup as="ol">
-            {comments?.map((comment, index) => (
+             {comments?.map((comment, index) => (
                 <Row key={index}>
                     <Col md={2}></Col>
                     <Col md={8}>
