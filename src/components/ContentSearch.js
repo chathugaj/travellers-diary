@@ -1,21 +1,34 @@
-import React, {useState} from "react";
+import React, {useEffect, useState} from "react";
 import {Container, Row, Col, Form, Button} from "react-bootstrap";
 
 import styles from "../styles/ContentSearch.module.css";
 import appStyles from "../App.module.css";
 import {fetchArticles, useSetSearchResult} from "../contexts/SearchContext";
-import {useParams, useSearchParams} from "react-router-dom";
+import {useNavigate, useParams, useSearchParams} from "react-router-dom";
 
-const ContentSearch = () => {
+const ContentSearch = ( { forwardTo } ) => {
     let [searchParams, setSearchParams] = useSearchParams();
     let search = searchParams.get("search") ? searchParams.get("search") : "";
     const [searchText, setSearchText] = useState(search);
     const setSearchResult = useSetSearchResult();
+    const navigate = useNavigate()
+
+    useEffect(() => {
+        (async () => {
+            const response = await fetchArticles(search)
+            console.log(response)
+            setSearchResult(response)
+        })()
+    }, [search]);
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        fetchArticles(searchText)
-            .then((res) => setSearchResult(res))
+        if (forwardTo) {
+            navigate(`${forwardTo}?search=${searchText}`)
+        } else {
+            fetchArticles(searchText)
+                .then((res) => setSearchResult(res))
+        }
     }
 
     const handleChange = (event) => {

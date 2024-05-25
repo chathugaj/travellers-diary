@@ -7,11 +7,15 @@ const ArticleCards = ({articles}) => {
     const getArticleCards = (articles) => {
         let articleCards = [];
         for (let article of articles) {
-            articleCards.push(
-                <Col key={article.id} >
-                    <ArticleCard key={article.id} article={article}></ArticleCard>
-                </Col>
-            )
+            if (articleCards?.length < 3) {
+                articleCards.push(
+                    <Col key={article.id} >
+                        <ArticleCard key={article.id} article={article}></ArticleCard>
+                    </Col>
+                )
+            } else {
+                break;
+            }
         }
         return articleCards;
     }

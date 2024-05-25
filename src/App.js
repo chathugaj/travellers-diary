@@ -11,6 +11,7 @@ import PostPage from "./pages/PostPage";
 import ContentEditor from "./pages/ContentEditor";
 import Profile from "./pages/Profile";
 import ContactUs from "./pages/ContactUs";
+import NotFoundPage from "./pages/NotFoundPage";
 
 function App() {
 
@@ -28,6 +29,7 @@ function App() {
                 <Route path="signup" element={<SignUp/>}/>
                 <Route path="signin" element={<SignIn/>}/>
                 <Route path="forgot_password" element={<ForgotPassword/>}/>
+                <Route path="*" element={<NotFoundPage/>} />
             </Routes>
         </BrowserRouter>
     );

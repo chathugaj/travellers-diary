@@ -35,7 +35,7 @@ const NavBar = () => {
             SIGN OUT
         </Link>
         <Link className={styles.NavLink} to={`/profiles/${currentProfile?.id}`}>
-            <Avatar src={currentProfile?.image} height={40} />
+            <Avatar src={currentUser?.profile_image} height={40} />
         </Link>
     </>
 

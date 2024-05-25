@@ -7,7 +7,7 @@ const Home = () => {
         <>
             <Banner title="Traverler's Diary" actionButton={true}></Banner>
             <SearchResultProvider>
-                <ContentSearch></ContentSearch>
+                <ContentSearch forwardTo={'posts'}></ContentSearch>
                 <ArticleCardContainer></ArticleCardContainer>
             </SearchResultProvider>
         </>

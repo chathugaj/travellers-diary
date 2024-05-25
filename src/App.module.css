@@ -21,3 +21,8 @@
 .ContentContainer {
   margin: 100px 50px;
 }
+
+.ErrorIcon {
+  font-size: 160px;
+  color: var(--bs-danger);
+}
