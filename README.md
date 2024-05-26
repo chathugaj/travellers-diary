@@ -1,102 +1,349 @@
-![CI logo](https://codeinstitute.s3.amazonaws.com/fullstack/ci_logo_small.png)
+# Traveller's Diary
 
-Welcome,
+Traveller's Diary is a blog which contains articles about travel destinations.These articles were written by travellers.
 
-This is the Code Institute student template for React apps on the Codeanywhere IDE. We have preinstalled all of the tools you need to get started. It's perfectly ok to use this template as the basis for your project submissions.  
-DO NOT use this template if you are using the Gitpod IDE. Use the following command instead:  
-`npx create-react-app . --template git+https://github.com/Code-Institute-Org/cra-template-moments.git --use-npm`
+<br>
+The live link can be found here [Live site - Traveller's Diary](https://travellers-diary-0c3253b73ff3.herokuapp.com/posts)
+<br>
 
-You can safely delete this README.md file, or change it for your own project. Please do read it at least once, though! It contains some important information about Codeanywhere and the extensions we use. Some of this information has been updated since the video content was created. The last update to this file was: **31st August, 2023**
 
-## Codeanywhere Reminders
+![Mockup](screen shots mock up TO DO)
 
-In Codeanywhere you have superuser security privileges by default. Therefore you do not need to use the `sudo` (superuser do) command in the bash terminal in any of the lessons.
 
-To log into the Heroku toolbelt CLI:
+## The Strategy Plane
 
-1. Log in to your Heroku account and go to _Account Settings_ in the menu under your avatar.
-2. Scroll down to the _API Key_ and click _Reveal_
-3. Copy the key
-4. In Codeanywhere, from the terminal, run `heroku_config`
-5. Paste in your API key when asked
+### Site Goals
 
-You can now use the `heroku` CLI program - try running `heroku apps` to confirm it works. This API key is unique and private to you so do not share it. If you accidentally make it public then you can create a new one with _Regenerate API Key_.
+Traveller's Diary is a blog website where travelers can share their experiences,tips and recommendations.In order to help other travellers to plan their next trip.
 
----
+<hr>
 
-Happy coding!
+### Agile Planning
 
-# Getting Started with Create React App
+This project was developed using agile methodologies by delivering small features in incremental sprints. There were 3 sprints in total, spaced out evenly over three weeks.
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+All stories were assigned to epics, prioritized under the labels, Must have, should have, could have and assigned to sprints. "Must have" stories were completed first, "should haves" and then finally "could haves".
+The Kanban board was created using github projects and can be located [TO DO](Git hub board link TO DO) and can be viewed to see more information on the project cards.Only user stories have acceptance critieria to define the certain excecution.
 
-## Available Scripts
+![TO DO KANBAN](./docs/kanban_screenshot_traveller.png)
 
-In the project directory, you can run:
+<hr>
 
-### `npm install`
+## Epics
 
-Installs the required npm packages.
+**Project management**
 
-### `npm start`
+This Epic covers all the initial setup of the React application and dependencies in order to begin coding features.
 
-Runs the app in the development mode.\
-Open port 3000 to view it in the browser.
+**Content creation**
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+This epic covers the front end creation of the blog website in regards to posts. This is to allow users to interact with the backend API via the user interface in order to create, read, update and delete their own posts.
 
-### `npm test`
+**Content Creation/View content**
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+This epic covers the front end creation of the blog website in regards to comments and likes on posts. This is to allow users to interact with the backend API in order add comments and likes on posts.
 
-### `npm run build`
+**User sign up**
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+This epic covers the front end creation of the blog website in regards to user profiles. This is to allow users to interact with the backend API via the user interface to manage their own profiles.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+**Contact us**
+This epic covers report content and how to get help from support.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+**Search**
+This epic covers the front end creation of the blog website in regards to user searching the article.
 
-### `npm run eject`
+**Navigation**
+This epic covers the front end creation of the blog website in regards to user navigate between blog posts,signin,signup and contact us pages.
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+**Authorization/Authentication**
+This epic covers the front end creation of the blog website in regards to user signin and signup.
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+<hr>
+<br>
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+## User Stories
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+By Epic:
 
-## Learn More
+**Project management**
+* As a developer, I want to create a documentation for the project, so that others can read and understand the concepts. 
+* As a developer I want my application deployed in heroku, so that users can start using it.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+**Content creation**
+* As a user I want to create and publish my articles, so that I can share my experience with other fellow travelers .
+* As a user I want to create and manage my comments on posts.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
 
-### Code Splitting
+**View content**
+* As a user I want to read posts on the website, so that I can enjoy the other traverllers experience.
+* As a user I want to read comments on a post on the website, so that I can see related experience from other travellers.
+* As a user I want to see the latest three posts in the home page.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
 
-### Analyzing the Bundle Size
+**User sign up**
+* As a user I want to view my profile detials, so that I can verify the details are up to date.
+* As a user I want to view other user profiles, so that I can get to know the other users.
+* As a User I want to create my profile by signing up in the system.
+* As a User I want to edit my profile, so that I an keep my details up to date.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
 
-### Making a Progressive Web App
+**Contact us**
+* As a user I want a contact us page, so that I can report issues or misconduct of other users.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+**Search**
+* As a user I want to be able to search the artcles with the content, so that I can view articles with certain keywods in the title.
 
-### Advanced Configuration
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
+**Navigation**
+* As a user I want to navgate through main pages of the system quickly, so that I can perform tasks I want easily.
 
-### Deployment
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
+**Authorization/Authentication**
+* As an authenticated user only, I can access the article editor, so that I can write articles.
+* As an authenticted user only, I can comment on articles, so that I can share my thoughts on a post.
+* As an authenticated user only, I can access the article editor, so that I can write articles.
+* As an authenticted user only, I can comment on articles, so that I can share my thoughts on a post.
 
-### `npm run build` fails to minify
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+## The Structure Plane
+
+## Features:
+
+**Sign in**
+
+User Story:
+* As a user I can sign in with my username and password, so that I can have access to the content writer features of the blog.
+
+Implementation: 
+![Sign in](./docs/signin.png)
+
+**Search**
+User Story:
+* As a user I want to be able to search the artcles with the content, so that I can view articles with certain keywods in the title.
+
+Implementation: [TO DO]![Search](screen shots Search up TO DO)
+
+**Content Creation**
+User Story:
+As a user I want to create and publish my articles, so that I can share my experience with other fellow travelers.
+
+Implementation: [TO DO]![Content creation ](screen shots  TO DO)
+
+
+**Content view**
+User Story:
+*As a user I want to read posts on the website, so that I can enjoy the other traverllers experience.
+Implementation: [TO DO]![Content View ](screen shots  TO DO)
+
+
+
+**Authentication**
+User Story:
+*As an authenticted user only, I can comment on articles, so that I can share my thoughts on a post.
+Implementation: [TO DO]![Authentication ](screen shots  TO DO)
+
+User Story:
+*As an authenticated user only, I can access the article editor, so that I can write articles.
+Implementation: [TO DO]![Authentication ](screen shots  TO DO)
+
+
+
+**Comments**
+User Story:
+*As a user I want to read comments on a post on the website, so that I can see related experience from other travellers.
+Implementation: [TO DO]![Comments ](screen shots  TO DO)
+
+
+User Story:
+*As a user I want to create and manage my comments on posts.
+Implementation: [TO DO]![Comments ](screen shots  TO DO)
+
+**Profile**
+User Story:
+*As a User I want to edit my profile, so that I an keep my details up to date.
+Implementation: [TO DO]![Profile](screen shots  TO DO)
+
+User Story:
+*As a user I want to view my profile detials, so that I can verify the details are up to date.
+Implementation: [TO DO]![Profile](screen shots  TO DO)
+
+
+
+
+
+<br>
+
+### Future Features
+
+*As a future feature,I would like to add google map area and image gallery.
+
+<hr>
+<br>
+
+## The Skeleton Plane
+
+### Wireframes
+
+<summary>All Wireframe Images</summary>
+[TO DO]
+
+*Designed the wire frame with figma
+-Wireframes available [here](Screen shots of wireframe TO DO)
+
+
+
+## The Surface Plane
+
+### Design
+
+#### Colour-Scheme
+
+[TO DO]
+
+The background colour 
+Icon, headings and border colours
+Main text is
+The main page background colour
+
+<hr>
+<br>
+
+#### Typography
+
+The main font used on the website is
+
+[TO DO]
+
+<hr>
+<br>
+
+#### Imagery
+
+The images on this website are 
+[TO DO]
+
+<hr>
+<br>
+
+## Technologies
+
+* React
+    * Main framework used to create the user interface
+
+* Heroku
+    * Used for application hosting   
+
+ [TO DO]   
+
+
+ * Github
+    * Repository used to store base code and docs
+
+
+
+<hr>
+<br>
+
+## Testing
+Testing can be found in the [TESTING.md file][TO DO]
+
+<hr>
+<br>
+
+## Deployment
+## Heroku Deployment
+
+The site was deployed to Heroku. The steps to deploy are as follows:
+
+* Navigate to heroku and create an account
+* Click the new button in the top right corner
+* Select create new app
+* Enter app name
+* Select region and click create app
+* Click the resources tab and search for Heroku Postgres
+* Select hobby dev and continue
+
+* Click the deploy tab
+* Scroll down to Connect to GitHub and sign in / authorize when prompted
+* In the search box, find the repositoy you want to deploy and click connect
+* Scroll down to Manual deploy and choose the main branch
+* Click deploy
+<hr>
+<br>
+The live link can be found here: [Live Site - Traveller's Diary][TO DO]
+
+## Version Control
+
+The site was created using the Visual Studio Code editor and pushed to github to the remote repository ‘Traveller’s Diary.
+
+The following git commands were used throughout development to push code to the remote repo:
+
+```git add <file>``` - This command was used to add the file(s) to the staging area before they are committed.
+
+```git commit -m “commit message”``` - This command was used to commit changes to the local repository queue ready for the final step.
+
+```git push``` - This command was used to push all committed code to the remote repository on github.
+<hr>
+<br>
+
+### Run Locally
+
+Navigate to the GitHub Repository you want to clone to use locally:
+
+- Click on the code drop down button
+- Click on HTTPS
+- Copy the repository link to the clipboard
+- Open your IDE of choice (git must be installed for the next steps)
+- Type git clone copied-git-url into the IDE terminal
+
+The project will now have been cloned on your local machine for use.
+
+Install Dependencies:
+
+```npm install```
+
+Run Application:
+
+```npm start```
+<hr>
+<br>
+
+### Forking
+[TO DO]
+
+<hr>
+<br>
+
+## Credits
+[TO DO]
+
+### Content
+
+Logo used was taken from [TO DO]()
+
+Sign up & Sign in images taken from [TO DO]
+
+
+### Acknowledgements
+A special thanks to [TO DO]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

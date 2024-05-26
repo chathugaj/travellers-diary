@@ -7,8 +7,7 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import {CurrentUserProvider} from "./contexts/CurrentUserContext";
 import {CurrentProfileProvider} from "./contexts/ProfileContext";
-import {DevSupport} from "@react-buddy/ide-toolbox";
-import {ComponentPreviews, useInitial} from "./dev";
+import {SearchResultProvider} from "./contexts/SearchContext";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 
@@ -16,11 +15,9 @@ root.render(
     <React.StrictMode>
         <CurrentUserProvider>
             <CurrentProfileProvider>
-                <DevSupport ComponentPreviews={ComponentPreviews}
-                            useInitialHook={useInitial}
-                >
+                <SearchResultProvider>
                     <App/>
-                </DevSupport>
+                </SearchResultProvider>
             </CurrentProfileProvider>
         </CurrentUserProvider>
     </React.StrictMode>

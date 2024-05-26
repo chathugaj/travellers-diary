@@ -1,6 +1,7 @@
 import React from "react";
 import {ArticleCardContainer, Banner} from "../components";
 import ContentSearch from "./posts/ContentSearch"
+import {SearchResultProvider} from "../contexts/SearchContext";
 
 const Home = () => {
     return (

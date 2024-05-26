@@ -7,12 +7,13 @@ import {useSearchResult} from "../contexts/SearchContext";
 
 const ArticleCardContainer = () => {
     const {results} = useSearchResult()
-
+    console.log(results)
     return (
         <Container className={styles.CardContainer}>
             <SectionHeader title="Latest Posts"></SectionHeader>
             <ArticleCards articles={results}></ArticleCards>
         </Container>
+
     );
 };
 
