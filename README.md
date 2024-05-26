@@ -316,7 +316,8 @@ Run Application:
 <br>
 
 ## Credits
-[TO DO]
+React code references: https://github.com/mr-fibonacci/moments
+Infinite scrolling: https://www.npmjs.com/package/react-infinite-scroll-component
 
 ### Content
 
