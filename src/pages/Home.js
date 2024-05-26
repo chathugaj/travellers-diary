@@ -1,15 +1,15 @@
 import React from "react";
-import {ArticleCardContainer, Banner, ContentSearch} from "../components";
-import {SearchResultProvider} from "../contexts/SearchContext";
+import {ArticleCardContainer, Banner} from "../components";
+import ContentSearch from "./posts/ContentSearch"
 
 const Home = () => {
     return (
         <>
             <Banner title="Traverler's Diary" actionButton={true}></Banner>
-            <SearchResultProvider>
+            {/*<SearchResultProvider>*/}
                 <ContentSearch forwardTo={'posts'}></ContentSearch>
                 <ArticleCardContainer></ArticleCardContainer>
-            </SearchResultProvider>
+            {/*</SearchResultProvider>*/}
         </>
     );
 };

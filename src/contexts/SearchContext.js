@@ -1,35 +1,43 @@
 import {createContext, useContext, useEffect, useState} from "react";
 import axios from "../api/axiosDefaults";
+import {useLocation} from "react-router-dom";
 
 export const SearchResultContext = createContext();
 export const SetSearchResultContext = createContext()
 
 export const useSearchResult = () => useContext(SearchResultContext)
 export const useSetSearchResult = () => useContext(SetSearchResultContext)
-export async function fetchArticles(search) {
-    let url = "/posts/"
-    if (search) {
-        url = `${url}?search=${search}`
-    }
-    try {
-        const { data } = await axios.get(url);
-        return data;
-    } catch (e) {
-        console.log(e)
-    }
-}
 
 export const SearchResultProvider = ({ children }) => {
-    const [searchResult, setSearchResult] = useState({results:[]})
+    const [posts, setPosts] = useState({ results: [] });
+    const [hasLoaded, setHasLoaded] = useState(false);
+    const { pathname } = useLocation();
+    const filter = undefined
 
-    useEffect( () => {
-        fetchArticles()
-            .then(result => setSearchResult(result))
+    const [query, setQuery] = useState("");
+
+    console.log("===========")
+
+    useEffect(() => {
+        console.log("<<<<<<<<<<<<<")
+        const fetchPosts = async () => {
+            try {
+                console.log(">>>>>>>>>>>>>>>")
+                const { data } = await axios.get(`/posts/?${filter || 'page=1'}&search=${query}`);
+                console.log(data)
+                setPosts(data);
+                setHasLoaded(true);
+            } catch (err) {
+                console.log(err);
+            }
+        };
+
+        fetchPosts();
     }, []);
 
     return (
-        <SearchResultContext.Provider value={searchResult}>
-            <SetSearchResultContext.Provider value={setSearchResult}>
+        <SearchResultContext.Provider value={posts}>
+            <SetSearchResultContext.Provider value={setPosts}>
                 {children}
             </SetSearchResultContext.Provider>
         </SearchResultContext.Provider>

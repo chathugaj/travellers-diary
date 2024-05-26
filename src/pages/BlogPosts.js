@@ -1,15 +1,16 @@
 import React from "react";
-import {Banner, ContentSearch, SearchResultContainer} from "../components";
-import {SearchResultProvider} from "../contexts/SearchContext";
+import {Banner} from "../components";
+import ContentSearch from "./posts/ContentSearch"
+import SearchResultContainer from "./posts/SearchResultContainer";
 
 const BlogPosts = () => {
     return (
         <>
             <Banner title="Search The Diary"></Banner>
-            <SearchResultProvider>
+            {/*<SearchResultProvider>*/}
                 <ContentSearch></ContentSearch>
-                <SearchResultContainer></SearchResultContainer>
-            </SearchResultProvider>
+                <SearchResultContainer />
+            {/*</SearchResultProvider>*/}
         </>
     );
 };
