@@ -318,6 +318,7 @@ Run Application:
 ## Credits
 React code references: https://github.com/mr-fibonacci/moments
 Infinite scrolling: https://www.npmjs.com/package/react-infinite-scroll-component
+Banner image: https://www.pexels.com/
 
 ### Content
 
