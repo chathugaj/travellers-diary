@@ -9,6 +9,7 @@ import LikePost from "./post/LikePost";
 import CommentForm from "./post/CommentForm";
 import { useCurrentProfile } from "../contexts/ProfileContext";
 import CommentList from "./post/CommentList";
+import { CommentsProvider } from "../contexts/CommentsContext";
 
 const PostPage = () => {
   const { id } = useParams();
@@ -68,7 +69,9 @@ const PostPage = () => {
         ) : (
           <Row></Row>
         )}
-        <CommentList currentUser={currentUser} post={post?.results[0]} />
+        <CommentsProvider>
+          <CommentList currentUser={currentUser} post={post?.results[0]} />
+        </CommentsProvider>
       </Container>
     </>
   );

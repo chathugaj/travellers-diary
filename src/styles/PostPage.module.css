@@ -1,33 +1,33 @@
 .LikeCommon {
-    cursor: pointer;
-    font-size: 2rem;
+  cursor: pointer;
+  font-size: 2rem;
 }
 
 .LikeCount {
-    font-size: 1rem;
-    color: grey;
+  font-size: 1rem;
+  color: grey;
 }
 
 .Like {
-    color: dimgrey;
+  color: dimgrey;
 }
 
 .Like:hover {
-    color: black;
+  color: black;
 }
 
 .LikeOutline:hover {
-    color: black;
+  color: black;
 }
 
 .CommentContainer {
-    margin-top: 50px;
+  margin-top: 1rem;
 }
 
 .CommentIconButton {
-    font-size: 1rem;
+  font-size: 1rem;
 }
 
 .Info {
-    padding: 5px
+  padding: 5px;
 }
