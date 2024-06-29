@@ -1,27 +1,42 @@
-import { Col, Container, Row } from "react-bootstrap";
+import { Row } from "react-bootstrap";
 import InfiniteScroll from "react-infinite-scroll-component";
-import { fetchMoreData } from "../../utils/utils";
-import { Avatar } from "../../components";
+import { fetchMoreData, removeItem } from "../../utils/utils";
 import {
   fetchComments,
   useCommentResult,
   useSetCommentResult,
 } from "../../contexts/CommentsContext";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import CommentItem from "./CommentItem";
 
 const CommentList = ({ currentUser, post }) => {
   const commentResult = useCommentResult();
   const setCommentResult = useSetCommentResult();
+  const [deleted, setDeleted] = useState();
 
   useEffect(() => {
-    (async () => {
-      const response = await fetchComments(post);
-      setCommentResult(response);
-    })();
+    if (post) {
+      (async () => {
+        const response = await fetchComments(post);
+        setCommentResult(response);
+      })();
+    }
   }, [post]);
 
-  console.log(commentResult?.results);
+  useEffect(() => {
+    if (deleted) {
+      const handleDelete = async () => {
+        const newResult = await removeItem(
+          deleted,
+          commentResult,
+          setCommentResult
+        );
+        const response = await fetchComments(post);
+        setCommentResult(response);
+      };
+      handleDelete();
+    }
+  }, [deleted]);
 
   return (
     <Row id="scrollableList">
@@ -31,8 +46,13 @@ const CommentList = ({ currentUser, post }) => {
           next={() => fetchMoreData(commentResult, setCommentResult)}
           hasMore={!!commentResult.next}
           loader={<h4>Loading...</h4>}
-          children={commentResult?.results?.map((comment, index) => (
-            <CommentItem comment={comment}></CommentItem>
+          children={commentResult?.results?.map((comment) => (
+            <CommentItem
+              key={comment?.id}
+              comment={comment}
+              currentUser={currentUser}
+              handleDeleteComment={setDeleted}
+            ></CommentItem>
           ))}
         ></InfiniteScroll>
       )}

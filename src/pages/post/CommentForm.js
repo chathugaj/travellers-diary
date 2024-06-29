@@ -4,12 +4,7 @@ import appStyles from "../../App.module.css";
 import styles from "../../styles/PostPage.module.css";
 import axios from "axios";
 
-const CommentForm = ({
-  currentUser,
-  currentProfile,
-  post,
-  setCommentUpdated,
-}) => {
+const CommentForm = ({ currentUser, post, setCommentUpdated }) => {
   const [commentData, setCommentData] = React.useState({
     content: "",
   });
