@@ -7,8 +7,9 @@ import { useSearchResult } from "../contexts/SearchContext";
 
 const ArticleCardContainer = () => {
   const { results } = useSearchResult();
+
   return (
-    <Container className={styles.CardContainer}>
+    <Container fluid className={styles.CardContainer}>
       <SectionHeader title="Latest Posts"></SectionHeader>
       <ArticleCards articles={results}></ArticleCards>
     </Container>

@@ -6,12 +6,12 @@ const ArticleCards = ({ articles }) => {
   return (
     <Row md={2} xl={3}>
       {articles &&
-        articles.map((article, index) => {
-          if (index < 3) {
-            <Col md={6} xl={3} key={article.id}>
+        articles?.slice(0, 4)?.map((article, index) => {
+          return (
+            <Col md={6} xl={3} key={index}>
               <ArticleCard key={article.id} article={article}></ArticleCard>
-            </Col>;
-          }
+            </Col>
+          );
         })}
     </Row>
   );
