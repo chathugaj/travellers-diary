@@ -22,6 +22,7 @@ const PostPage = () => {
 
   useEffect(() => {
     const handleMount = async () => {
+      console.log("dddkdkdkdk");
       try {
         const [{ data: post }] = await Promise.all([
           axios.get(`/posts/${id}`),
@@ -65,12 +66,18 @@ const PostPage = () => {
             currentUser={currentUser}
             currentProfile={currentProfile}
             setCommentUpdated={setCommentUpdated}
+            buttonText="Comment"
           ></CommentForm>
         ) : (
           <Row></Row>
         )}
         <CommentsProvider>
-          <CommentList currentUser={currentUser} post={post?.results[0]} />
+          <CommentList
+            currentUser={currentUser}
+            currentProfile={currentProfile}
+            setCommentUpdated={setCommentUpdated}
+            post={post?.results[0]}
+          />
         </CommentsProvider>
       </Container>
     </>

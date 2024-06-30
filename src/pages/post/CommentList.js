@@ -9,10 +9,16 @@ import {
 import { useEffect, useState } from "react";
 import CommentItem from "./CommentItem";
 
-const CommentList = ({ currentUser, post }) => {
+const CommentList = ({
+  currentUser,
+  currentProfile,
+  post,
+  setCommentUpdated,
+}) => {
   const commentResult = useCommentResult();
   const setCommentResult = useSetCommentResult();
   const [deleted, setDeleted] = useState();
+  const [updated, setUpdated] = useState();
 
   useEffect(() => {
     if (post) {
@@ -38,6 +44,16 @@ const CommentList = ({ currentUser, post }) => {
     }
   }, [deleted]);
 
+  useEffect(() => {
+    if (updated) {
+      const handleEdit = async () => {
+        const response = await fetchComments(post);
+        setCommentResult(response);
+      };
+      handleEdit();
+    }
+  }, [updated]);
+
   return (
     <Row id="scrollableList">
       {post && commentResult && commentResult?.results && (
@@ -51,7 +67,11 @@ const CommentList = ({ currentUser, post }) => {
               key={comment?.id}
               comment={comment}
               currentUser={currentUser}
+              currentProfile={currentProfile}
+              setCommentUpdated={setUpdated}
               handleDeleteComment={setDeleted}
+              updateCommentResult={setCommentResult}
+              post={post}
             ></CommentItem>
           ))}
         ></InfiniteScroll>
