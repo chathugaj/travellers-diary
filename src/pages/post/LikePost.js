@@ -1,19 +1,39 @@
 import { Col, OverlayTrigger, Row, Tooltip } from "react-bootstrap";
 import styles from "../../styles/PostPage.module.css";
 import React from "react";
-import axios from "../../api/axiosDefaults";
+import { addCsrfTokenHeaders } from "../../api/axiosDefaults";
+import axios from "axios";
 
 const LikePost = ({ isOwner, post, setLikeClicked, currentUser }) => {
   const handleUnlike = async () => {
-    const { status } = await axios.delete(`/likes/${post?.like_id}`);
+    const { status } = await axios({
+      method: "delete",
+      url: `/likes/${post?.like_id}`,
+      headers: {
+        "X-CSRF-TOKEN": getCookie("csrftoken"),
+        "X-CSRFToken": getCookie("csrftoken"),
+      },
+    });
     //We set this false to indicate the user unliked the post
     setLikeClicked(!(status === 204));
   };
 
   const handleLike = async () => {
-    const { status } = await axios.post(`/likes/`, {
-      post: post?.id,
-      owner: currentUser?.username,
+    // const { status } = await axios.post(`/likes/`, {
+    //   post: post?.id,
+    //   owner: currentUser?.username,
+    // });
+    const { status } = await axios({
+      method: "post",
+      url: `/likes/`,
+      headers: {
+        "X-CSRF-TOKEN": getCookie("csrftoken"),
+        "X-CSRFToken": getCookie("csrftoken"),
+      },
+      data: {
+        post: post?.id,
+        owner: currentUser?.username,
+      },
     });
     setLikeClicked(status === 201);
   };
