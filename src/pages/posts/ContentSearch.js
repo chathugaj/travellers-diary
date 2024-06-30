@@ -37,7 +37,7 @@ const ContentSearch = ({ forwardTo }) => {
   };
 
   return (
-    <Container>
+    <Container fluid>
       <Row>
         <Form inline="inline" onSubmit={handleSubmit}>
           <Row>

@@ -18,7 +18,8 @@
 }
 
 .ContentContainer {
-  margin: 100px 50px;
+  padding: 0rem 2rem;
+  margin-top: 5rem;
 }
 
 .ErrorIcon {
