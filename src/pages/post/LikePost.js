@@ -3,6 +3,7 @@ import styles from "../../styles/PostPage.module.css";
 import React from "react";
 import { addCsrfTokenHeaders } from "../../api/axiosDefaults";
 import axios from "axios";
+import { getCookie } from "../../helpers/commonHelper";
 
 const LikePost = ({ isOwner, post, setLikeClicked, currentUser }) => {
   const handleUnlike = async () => {
