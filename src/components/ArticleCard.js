@@ -3,7 +3,6 @@ import Card from "react-bootstrap/Card";
 import styles from "../styles/ArticleCard.module.css";
 
 const ArticleCard = ({ article }) => {
-  console.log(article);
   return (
     <Card>
       <Card.Img

@@ -20,7 +20,6 @@ export const removeItem = async (removable, currentResource) => {
   try {
     await axios.delete(`/comments/${removable?.id}`);
     const index = currentResource.results.indexOf(removable);
-    console.log(index);
     if (index > -1) {
       currentResource.results.splice(index, 1);
     }

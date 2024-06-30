@@ -56,7 +56,6 @@ const CommentForm = ({
 
   useEffect(() => {
     if (comment) {
-      console.log(comment);
       setCommentData(comment);
     }
   }, [comment]);

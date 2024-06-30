@@ -22,14 +22,9 @@ const PostPage = () => {
 
   useEffect(() => {
     const handleMount = async () => {
-      console.log("dddkdkdkdk");
       try {
-        const [{ data: post }] = await Promise.all([
-          axios.get(`/posts/${id}`),
-          // axios.get(`/comments/?post=${id}&page=1`),
-        ]);
+        const [{ data: post }] = await Promise.all([axios.get(`/posts/${id}`)]);
         setPost({ results: [post] });
-        // setComments(commentsData);
       } catch (err) {
         console.log(err);
       }
