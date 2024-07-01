@@ -1,6 +1,5 @@
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
 import axios, { axiosReq, axiosRes } from "../api/axiosDefaults";
-import { getCookie } from "../helpers/commonHelper";
 
 export const CurrentUserContext = createContext();
 export const SetCurrentUserContext = createContext();
@@ -16,7 +15,7 @@ export const CurrentUserProvider = ({ children }) => {
 
   const handleMount = async () => {
     try {
-      const { data } = await axiosReq.get("dj-rest-auth/user/");
+      const { data } = await axios.get("dj-rest-auth/user/");
       setCurrentUser(data);
     } catch (err) {
       console.log(err);
@@ -28,15 +27,10 @@ export const CurrentUserProvider = ({ children }) => {
   }, []);
 
   useMemo(() => {
-    axios.interceptors.request.use(
+    axiosReq.interceptors.request.use(
       async (config) => {
-        config.headers = Object.assign({}, config?.headers, {
-          "X-CSRF-TOKEN": getCookie("csrftoken"),
-          "X-CSRFToken": getCookie("csrftoken"),
-        });
-
         try {
-          await axiosReq.post("/dj-rest-auth/token/refresh/");
+          await axios.post("/dj-rest-auth/token/refresh/");
         } catch (err) {
           setCurrentUser((prevCurrentUser) => {
             if (prevCurrentUser) {
@@ -53,12 +47,12 @@ export const CurrentUserProvider = ({ children }) => {
       }
     );
 
-    axios.interceptors.response.use(
+    axiosRes.interceptors.response.use(
       (response) => response,
       async (err) => {
         if (err.response?.status === 401) {
           try {
-            await axiosRes.post("/dj-rest-auth/token/refresh/");
+            await axios.post("/dj-rest-auth/token/refresh/");
           } catch (err) {
             setCurrentUser((prevCurrentUser) => {
               if (prevCurrentUser) {
