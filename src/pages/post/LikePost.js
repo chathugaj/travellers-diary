@@ -9,16 +9,28 @@ const LikePost = ({ isOwner, post, setLikeClicked, currentUser }) => {
   const token = getCookie("csrftoken");
 
   const handleUnlike = async () => {
-    const { status } = await axios({
-      method: "delete",
-      url: `/likes/${post?.like_id}`,
-      headers: {
-        "X-CSRF-TOKEN": token,
-        "X-CSRFToken": token,
-      },
-    });
+    //   // const { status } = await axios({
+    //   //   method: "delete",
+    //   //   url: `/likes/${post?.like_id}`,
+    //   //   headers: {
+    //   //     "X-CSRF-TOKEN": token,
+    //   //     "X-CSRFToken": token,
+    //   //   },
+    //   });
+    const response = await fetch(
+      `${process.env.REACT_APP_API_URL}/likes/${post?.like_id}`,
+      {
+        method: "DELETE",
+        credentials: "include",
+        headers: {
+          "X-CSRF-TOKEN": token,
+          "X-CSRFToken": token,
+          "Content-Type": "application/json",
+        },
+      }
+    );
     //We set this false to indicate the user unliked the post
-    setLikeClicked(!(status === 204));
+    setLikeClicked(!(response.status === 204));
   };
 
   const handleLike = async () => {
@@ -26,20 +38,29 @@ const LikePost = ({ isOwner, post, setLikeClicked, currentUser }) => {
     //   post: post?.id,
     //   owner: currentUser?.username,
     // });
-    const { status } = await axios({
-      method: "post",
-      url: `/likes/`,
+    // const { status } = await axios({
+    //   method: "post",
+    //   url: `/likes/`,
+    //   headers: {
+    //     "X-CSRF-TOKEN": token,
+    //     "X-CSRFToken": token,
+    //   },
+    //   data: {
+    //     post: post?.id,
+    //     owner: currentUser?.username,
+    //   },
+    // });
+    const response = await fetch(`${process.env.REACT_APP_API_URL}/likes/`, {
+      method: "POST",
+      credentials: "include",
       headers: {
         "X-CSRF-TOKEN": token,
         "X-CSRFToken": token,
-      },
-      data: {
-        post: post?.id,
-        owner: currentUser?.username,
+        "Content-Type": "application/json",
       },
     });
 
-    setLikeClicked(status === 201);
+    setLikeClicked(response.status === 201);
   };
 
   return (
