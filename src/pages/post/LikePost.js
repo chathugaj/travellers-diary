@@ -6,13 +6,15 @@ import axios from "axios";
 import { getCookie } from "../../helpers/commonHelper";
 
 const LikePost = ({ isOwner, post, setLikeClicked, currentUser }) => {
+  const token = getCookie("csrftoken");
+
   const handleUnlike = async () => {
     const { status } = await axios({
       method: "delete",
       url: `/likes/${post?.like_id}`,
       headers: {
-        "X-CSRF-TOKEN": getCookie("csrftoken"),
-        "X-CSRFToken": getCookie("csrftoken"),
+        "X-CSRF-TOKEN": token,
+        "X-CSRFToken": token,
       },
     });
     //We set this false to indicate the user unliked the post
@@ -28,14 +30,15 @@ const LikePost = ({ isOwner, post, setLikeClicked, currentUser }) => {
       method: "post",
       url: `/likes/`,
       headers: {
-        "X-CSRF-TOKEN": getCookie("csrftoken"),
-        "X-CSRFToken": getCookie("csrftoken"),
+        "X-CSRF-TOKEN": token,
+        "X-CSRFToken": token,
       },
       data: {
         post: post?.id,
         owner: currentUser?.username,
       },
     });
+
     setLikeClicked(status === 201);
   };
 
