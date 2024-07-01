@@ -1,5 +1,7 @@
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
 import axios, { axiosReq, axiosRes } from "../api/axiosDefaults";
+import * as fetchIntercept from "fetch-intercept";
+import { getCookie } from "../helpers/commonHelper";
 
 export const CurrentUserContext = createContext();
 export const SetCurrentUserContext = createContext();
@@ -27,6 +29,30 @@ export const CurrentUserProvider = ({ children }) => {
   }, []);
 
   useMemo(() => {
+    const unregister = fetchIntercept.register({
+      request: function (url, config) {
+        config.headers = {
+          ...config.headers,
+          "X-CSRF-TOKEN": getCookie("csrftoken"),
+          "X-CSRFToken": getCookie("csrftoken"),
+        };
+        return [url, config];
+      },
+
+      requestError: function (error) {
+        return Promise.reject(error);
+      },
+
+      response: function (response) {
+        return response;
+      },
+
+      responseError: function (error) {
+        return Promise.reject(error);
+      },
+    });
+
+    unregister();
     // axiosReq.interceptors.request.use(
     //   async (config) => {
     //     try {

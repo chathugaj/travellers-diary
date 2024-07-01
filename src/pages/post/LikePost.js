@@ -4,6 +4,7 @@ import React from "react";
 import { addCsrfTokenHeaders } from "../../api/axiosDefaults";
 import axios from "axios";
 import { getCookie } from "../../helpers/commonHelper";
+import { json } from "react-router-dom";
 
 const LikePost = ({ isOwner, post, setLikeClicked, currentUser }) => {
   const token = getCookie("csrftoken");
@@ -23,8 +24,6 @@ const LikePost = ({ isOwner, post, setLikeClicked, currentUser }) => {
         method: "DELETE",
         credentials: "include",
         headers: {
-          "X-CSRF-TOKEN": getCookie("csrftoken"),
-          "X-CSRFToken": getCookie("csrftoken"),
           "Content-Type": "application/json",
         },
       }
@@ -58,6 +57,10 @@ const LikePost = ({ isOwner, post, setLikeClicked, currentUser }) => {
         "X-CSRFToken": getCookie("csrftoken"),
         "Content-Type": "application/json",
       },
+      body: JSON.stringify({
+        post: post?.id,
+        owner: currentUser?.username,
+      }),
     });
 
     setLikeClicked(response.status === 201);
