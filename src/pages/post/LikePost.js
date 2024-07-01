@@ -5,13 +5,13 @@ import axios, { axiosReq } from "../../api/axiosDefaults";
 
 const LikePost = ({ isOwner, post, setLikeClicked, currentUser }) => {
   const handleUnlike = async () => {
-    const { status } = await axiosReq.delete(`/likes/${post?.like_id}`);
+    const { status } = await axios.delete(`/likes/${post?.like_id}`);
     //We set this false to indicate the user unliked the post
     setLikeClicked(!(status === 204));
   };
 
   const handleLike = async () => {
-    const { status } = await axiosReq.post(`/likes/`, {
+    const { status } = await axios.post(`/likes/`, {
       post: post?.id,
       owner: currentUser?.username,
     });
