@@ -1,5 +1,6 @@
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
 import axios, { axiosReq, axiosRes } from "../api/axiosDefaults";
+import { getCookie } from "../helpers/commonHelper";
 
 export const CurrentUserContext = createContext();
 export const SetCurrentUserContext = createContext();
@@ -27,8 +28,13 @@ export const CurrentUserProvider = ({ children }) => {
   }, []);
 
   useMemo(() => {
-    axiosReq.interceptors.request.use(
+    axios.interceptors.request.use(
       async (config) => {
+        config.headers = Object.assign({}, config?.headers, {
+          "X-CSRF-TOKEN": getCookie("csrftoken"),
+          "X-CSRFToken": getCookie("csrftoken"),
+        });
+
         try {
           await axios.post("/dj-rest-auth/token/refresh/");
         } catch (err) {
@@ -47,7 +53,7 @@ export const CurrentUserProvider = ({ children }) => {
       }
     );
 
-    axiosRes.interceptors.response.use(
+    axios.interceptors.response.use(
       (response) => response,
       async (err) => {
         if (err.response?.status === 401) {

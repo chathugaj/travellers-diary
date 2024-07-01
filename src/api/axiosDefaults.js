@@ -13,7 +13,7 @@ export const addCsrfTokenHeaders = async (config) => {
   return config;
 };
 
-axios.interceptors.request.use(addCsrfTokenHeaders);
+// axios.interceptors.request.use(addCsrfTokenHeaders);
 
 export const axiosReq = axios.create();
 export const axiosRes = axios.create();
