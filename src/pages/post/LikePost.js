@@ -1,69 +1,21 @@
 import { Col, OverlayTrigger, Row, Tooltip } from "react-bootstrap";
 import styles from "../../styles/PostPage.module.css";
 import React from "react";
-import { addCsrfTokenHeaders } from "../../api/axiosDefaults";
-import axios from "axios";
-import { getCookie } from "../../helpers/commonHelper";
-import { json } from "react-router-dom";
+import axios from "../../api/axiosDefaults";
 
 const LikePost = ({ isOwner, post, setLikeClicked, currentUser }) => {
-  const token = getCookie("csrftoken");
-
   const handleUnlike = async () => {
-    //   // const { status } = await axios({
-    //   //   method: "delete",
-    //   //   url: `/likes/${post?.like_id}`,
-    //   //   headers: {
-    //   //     "X-CSRF-TOKEN": token,
-    //   //     "X-CSRFToken": token,
-    //   //   },
-    //   });
-    const response = await fetch(
-      `${process.env.REACT_APP_API_URL}/likes/${post?.like_id}`,
-      {
-        method: "DELETE",
-        credentials: "include",
-        headers: {
-          "Content-Type": "application/json",
-        },
-      }
-    );
+    const { status } = await axios.delete(`/likes/${post?.like_id}`);
     //We set this false to indicate the user unliked the post
-    setLikeClicked(!(response.status === 204));
+    setLikeClicked(!(status === 204));
   };
 
   const handleLike = async () => {
-    // const { status } = await axios.post(`/likes/`, {
-    //   post: post?.id,
-    //   owner: currentUser?.username,
-    // });
-    // const { status } = await axios({
-    //   method: "post",
-    //   url: `/likes/`,
-    //   headers: {
-    //     "X-CSRF-TOKEN": token,
-    //     "X-CSRFToken": token,
-    //   },
-    //   data: {
-    //     post: post?.id,
-    //     owner: currentUser?.username,
-    //   },
-    // });
-    const response = await fetch(`${process.env.REACT_APP_API_URL}/likes/`, {
-      method: "POST",
-      credentials: "include",
-      headers: {
-        "X-CSRF-TOKEN": getCookie("csrftoken"),
-        "X-CSRFToken": getCookie("csrftoken"),
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        post: post?.id,
-        owner: currentUser?.username,
-      }),
+    const { status } = await axios.post(`/likes/`, {
+      post: post?.id,
+      owner: currentUser?.username,
     });
-
-    setLikeClicked(response.status === 201);
+    setLikeClicked(status === 201);
   };
 
   return (
