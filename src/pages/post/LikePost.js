@@ -23,8 +23,8 @@ const LikePost = ({ isOwner, post, setLikeClicked, currentUser }) => {
         method: "DELETE",
         credentials: "include",
         headers: {
-          "X-CSRF-TOKEN": token,
-          "X-CSRFToken": token,
+          "X-CSRF-TOKEN": getCookie("csrftoken"),
+          "X-CSRFToken": getCookie("csrftoken"),
           "Content-Type": "application/json",
         },
       }
@@ -54,8 +54,8 @@ const LikePost = ({ isOwner, post, setLikeClicked, currentUser }) => {
       method: "POST",
       credentials: "include",
       headers: {
-        "X-CSRF-TOKEN": token,
-        "X-CSRFToken": token,
+        "X-CSRF-TOKEN": getCookie("csrftoken"),
+        "X-CSRFToken": getCookie("csrftoken"),
         "Content-Type": "application/json",
       },
     });
