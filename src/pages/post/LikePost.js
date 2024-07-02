@@ -2,6 +2,7 @@ import { Col, OverlayTrigger, Row, Tooltip } from "react-bootstrap";
 import styles from "../../styles/PostPage.module.css";
 import React from "react";
 import axios, { axiosReq } from "../../api/axiosDefaults";
+import Cookies from "js-cookie";
 
 const LikePost = ({ isOwner, post, setLikeClicked, currentUser }) => {
   const handleUnlike = async () => {
@@ -11,6 +12,7 @@ const LikePost = ({ isOwner, post, setLikeClicked, currentUser }) => {
   };
 
   const handleLike = async () => {
+    console.log(Cookies.get("csrftoken"));
     const { status } = await axios.post(`/likes/`, {
       post: post?.id,
       owner: currentUser?.username,
