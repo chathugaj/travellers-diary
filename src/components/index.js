@@ -1,5 +1,4 @@
 import Banner from "./Banner";
-import ContentSearch from "../pages/posts/ContentSearch";
 import ArticleCardContainer from "./ArticleCardContainer";
 import ArticleCard from "./ArticleCard";
 import ArticleCards from "./ArticleCards";
@@ -10,13 +9,13 @@ import SearchSidebar from "./SearchSidebar";
 import Avatar from "./Avatar";
 
 export {
-    Banner,
-    ArticleCardContainer,
-    ArticleCard,
-    ArticleCards,
-    NavBar,
-    PageFooter,
-    SectionHeader,
-    SearchSidebar,
-    Avatar
+  Banner,
+  ArticleCardContainer,
+  ArticleCard,
+  ArticleCards,
+  NavBar,
+  PageFooter,
+  SectionHeader,
+  SearchSidebar,
+  Avatar,
 };

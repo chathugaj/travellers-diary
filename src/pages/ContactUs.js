@@ -17,7 +17,7 @@ const ContactUs = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const { data } = await axios.post("/contacts/", contactUsData);
+      await axios.post("/reports/", contactUsData);
       setContactUsData({
         reason: "",
         message: "",

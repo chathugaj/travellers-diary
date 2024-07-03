@@ -37,9 +37,6 @@ const SignIn = () => {
     event.preventDefault();
     try {
       const { data } = await axios.post("/dj-rest-auth/login/", signInData);
-      sessionStorage.setItem("accessToken", data.access);
-      sessionStorage.setItem("refreshToken", data.refersh);
-      console.log(data);
       setCurrentUser(data.user);
       navigate("/");
     } catch (err) {

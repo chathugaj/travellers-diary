@@ -12,7 +12,6 @@ const LikePost = ({ isOwner, post, setLikeClicked, currentUser }) => {
   };
 
   const handleLike = async () => {
-    console.log(Cookies.get("csrftoken"));
     const { status } = await axios.post(`/likes/`, {
       post: post?.id,
       owner: currentUser?.username,
