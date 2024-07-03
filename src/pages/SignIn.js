@@ -37,20 +37,16 @@ const SignIn = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const { data, headers } = await axios.post(
-        "/dj-rest-auth/login/",
-        signInData,
-        {
-          withCredentials: true,
-        }
-      );
-      console.log(headers);
-      const setCookieHeader = headers["set-cookie"];
+      const response = await axios.post("/dj-rest-auth/login/", signInData, {
+        withCredentials: true,
+      });
+      console.log(response);
+      const setCookieHeader = response.headers["set-cookie"];
       // sessionStorage.setItem("csrfToken", jsCookie);
 
       // You can now store the cookie or use it for subsequent requests
       console.log("Cookie received:", setCookieHeader);
-      setCurrentUser(data.user);
+      setCurrentUser(response.data.user);
       navigate("/");
     } catch (err) {
       setErrors(err.response?.data);
