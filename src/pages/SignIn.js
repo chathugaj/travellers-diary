@@ -12,7 +12,8 @@ import {
 import styles from "../styles/SignIn.module.css";
 import { Link, useNavigate } from "react-router-dom";
 import { useSetCurrentUser } from "../contexts/CurrentUserContext";
-import axios from "../api/axiosDefaults";
+import axios from "axios";
+import jsCookie from "js-cookie";
 
 const SignIn = () => {
   const setCurrentUser = useSetCurrentUser();
@@ -36,7 +37,19 @@ const SignIn = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      const { data } = await axios.post("/dj-rest-auth/login/", signInData);
+      const { data, headers } = await axios.post(
+        "/dj-rest-auth/login/",
+        signInData,
+        {
+          withCredentials: true,
+        }
+      );
+      console.log(headers);
+      const setCookieHeader = headers["set-cookie"];
+      // sessionStorage.setItem("csrfToken", jsCookie);
+
+      // You can now store the cookie or use it for subsequent requests
+      console.log("Cookie received:", setCookieHeader);
       setCurrentUser(data.user);
       navigate("/");
     } catch (err) {

@@ -8,6 +8,7 @@ const LikePost = ({ isOwner, post, setLikeClicked, currentUser }) => {
   const handleUnlike = async () => {
     const { status } = await axios.delete(`/likes/${post?.like_id}`);
     //We set this false to indicate the user unliked the post
+
     setLikeClicked(!(status === 204));
   };
 

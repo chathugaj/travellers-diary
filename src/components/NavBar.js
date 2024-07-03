@@ -17,7 +17,11 @@ const NavBar = () => {
 
   const handleSignOut = async (event) => {
     try {
-      await axios.post("/dj-rest-auth/logout/");
+      await axios.post("/dj-rest-auth/logout/", {
+        headers: {
+          Authorization: `Bearer ${sessionStorage.getItem("accessToken")}`,
+        },
+      });
       setCurrentUser(null);
     } catch (error) {
       console.log(error);
