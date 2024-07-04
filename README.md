@@ -229,7 +229,8 @@ Images used in the site are free with attribution, taken from https://www.pexels
 
 ## Testing
 
-Testing can be found in the [TESTING.md file][TO DO]
+esting was performed manually after creating a test matrix
+![Text matrix](./docs/tests.png)
 
 <hr>
 <br>
@@ -319,3 +320,7 @@ https://docs.djangoproject.com/en/4.2/
 https://axios-http.com/docs/intro
 
 https://learn.codeinstitute.net/courses/course-v1:CodeInstitute+DRF+2/courseware
+
+### BUGS and ISSUES
+
+- Local application works without any issues. But in the heroku deployed version the users's session is immediately lost after the signin. I have been trying to resove this for few days now, without any luck. I took a discussion with my mentor also without any success.
