@@ -3,7 +3,7 @@
 Traveller's Diary is a blog which contains articles about travel destinations.These articles were written by travellers.
 
 <br>
-The live link can be found here [Live site - Traveller's Diary](https://travellers-diary-0c3253b73ff3.herokuapp.com/posts)
+The live link can be found here [Live site - Traveller's Diary](https://travellers-diary-0c3253b73ff3.herokuapp.com)
 <br>
 
 ![Mockup](screen shots mock up TO DO)
