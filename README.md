@@ -6,9 +6,7 @@ Traveller's Diary is a blog which contains articles about travel destinations.Th
 The live link can be found here [Live site - Traveller's Diary](https://travellers-diary-0c3253b73ff3.herokuapp.com/posts)
 <br>
 
-
 ![Mockup](screen shots mock up TO DO)
-
 
 ## The Strategy Plane
 
@@ -67,44 +65,46 @@ This epic covers the front end creation of the blog website in regards to user s
 By Epic:
 
 **Project management**
-* As a developer, I want to create a documentation for the project, so that others can read and understand the concepts. 
-* As a developer I want my application deployed in heroku, so that users can start using it.
+
+- As a developer, I want to create a documentation for the project, so that others can read and understand the concepts.
+- As a developer I want my application deployed in heroku, so that users can start using it.
 
 **Content creation**
-* As a user I want to create and publish my articles, so that I can share my experience with other fellow travelers .
-* As a user I want to create and manage my comments on posts.
 
+- As a user I want to create and publish my articles, so that I can share my experience with other fellow travelers .
+- As a user I want to create and manage my comments on posts.
 
 **View content**
-* As a user I want to read posts on the website, so that I can enjoy the other traverllers experience.
-* As a user I want to read comments on a post on the website, so that I can see related experience from other travellers.
-* As a user I want to see the latest three posts in the home page.
 
+- As a user I want to read posts on the website, so that I can enjoy the other traverllers experience.
+- As a user I want to read comments on a post on the website, so that I can see related experience from other travellers.
+- As a user I want to see the latest three posts in the home page.
 
 **User sign up**
-* As a user I want to view my profile detials, so that I can verify the details are up to date.
-* As a user I want to view other user profiles, so that I can get to know the other users.
-* As a User I want to create my profile by signing up in the system.
-* As a User I want to edit my profile, so that I an keep my details up to date.
 
+- As a user I want to view my profile detials, so that I can verify the details are up to date.
+- As a user I want to view other user profiles, so that I can get to know the other users.
+- As a User I want to create my profile by signing up in the system.
+- As a User I want to edit my profile, so that I an keep my details up to date.
 
 **Contact us**
-* As a user I want a contact us page, so that I can report issues or misconduct of other users.
+
+- As a user I want a contact us page, so that I can report issues or misconduct of other users.
 
 **Search**
-* As a user I want to be able to search the artcles with the content, so that I can view articles with certain keywods in the title.
 
+- As a user I want to be able to search the artcles with the content, so that I can view articles with certain keywods in the title.
 
 **Navigation**
-* As a user I want to navgate through main pages of the system quickly, so that I can perform tasks I want easily.
 
+- As a user I want to navgate through main pages of the system quickly, so that I can perform tasks I want easily.
 
 **Authorization/Authentication**
-* As an authenticated user only, I can access the article editor, so that I can write articles.
-* As an authenticted user only, I can comment on articles, so that I can share my thoughts on a post.
-* As an authenticated user only, I can access the article editor, so that I can write articles.
-* As an authenticted user only, I can comment on articles, so that I can share my thoughts on a post.
 
+- As an authenticated user only, I can access the article editor, so that I can write articles.
+- As an authenticted user only, I can comment on articles, so that I can share my thoughts on a post.
+- As an authenticated user only, I can access the article editor, so that I can write articles.
+- As an authenticted user only, I can comment on articles, so that I can share my thoughts on a post.
 
 ## The Structure Plane
 
@@ -113,70 +113,65 @@ By Epic:
 **Sign in**
 
 User Story:
-* As a user I can sign in with my username and password, so that I can have access to the content writer features of the blog.
 
-Implementation: 
+- As a user I can sign in with my username and password, so that I can have access to the content writer features of the blog.
+
+Implementation:
 ![Sign in](./docs/signin.png)
 
 **Search**
 User Story:
-* As a user I want to be able to search the artcles with the content, so that I can view articles with certain keywods in the title.
 
-Implementation: [TO DO]![Search](screen shots Search up TO DO)
+- As a user I want to be able to search the artcles with the content, so that I can view articles with certain keywods in the title.
+
+Implementation: [Filter by keyword]![Search](./docs/search.png)
 
 **Content Creation**
 User Story:
 As a user I want to create and publish my articles, so that I can share my experience with other fellow travelers.
 
-Implementation: [TO DO]![Content creation ](screen shots  TO DO)
-
+Implementation: [Content creation]![Content creation ](./docs/create_post.png)
 
 **Content view**
 User Story:
-*As a user I want to read posts on the website, so that I can enjoy the other traverllers experience.
-Implementation: [TO DO]![Content View ](screen shots  TO DO)
+\*As a user I want to read posts on the website, so that I can enjoy the other traverllers experience.
+Implementation: [Blog posts page]![Posts page and search](./docs/posts_page.png)
 
-
+Implementation: [Home page with recent articles]![Home page with recent articles](./docs/home_articles.png)
 
 **Authentication**
 User Story:
-*As an authenticted user only, I can comment on articles, so that I can share my thoughts on a post.
-Implementation: [TO DO]![Authentication ](screen shots  TO DO)
+\*As an authenticted user only, I can comment on articles, so that I can share my thoughts on a post.
+Implementation: [Unauthenticated]![Unauthenticated](./docs/comment_blocked_for_Unauthenticated.png)
 
 User Story:
-*As an authenticated user only, I can access the article editor, so that I can write articles.
-Implementation: [TO DO]![Authentication ](screen shots  TO DO)
-
-
+\*As an authenticated user only, I can access the article editor, so that I can write articles.
+Implementation: [TO DO]![Authentication ](screen shots TO DO)
 
 **Comments**
 User Story:
-*As a user I want to read comments on a post on the website, so that I can see related experience from other travellers.
-Implementation: [TO DO]![Comments ](screen shots  TO DO)
-
+\*As a user I want to read comments on a post on the website, so that I can see related experience from other travellers.
+Implementation: [Write article is clickable]![Write article button goes to editor only when authenticated](./docs/write_article.png)
 
 User Story:
-*As a user I want to create and manage my comments on posts.
-Implementation: [TO DO]![Comments ](screen shots  TO DO)
+\*As a user I want to create and manage my comments on posts.
+Implementation: [Edit and delete comments]![Edit and delete comments](./docs/edit_delete_signedin.png)
 
 **Profile**
-User Story:
-*As a User I want to edit my profile, so that I an keep my details up to date.
-Implementation: [TO DO]![Profile](screen shots  TO DO)
 
 User Story:
-*As a user I want to view my profile detials, so that I can verify the details are up to date.
-Implementation: [TO DO]![Profile](screen shots  TO DO)
+\*As a User I want to edit my profile, so that I an keep my details up to date.
 
+User Story:
+\*As a user I want to view my profile detials, so that I can verify the details are up to date.
 
-
-
+Implementation: [Profile]![Profile](./docs/profile.png)
 
 <br>
 
 ### Future Features
 
-*As a future feature,I would like to add google map area and image gallery.
+\*As a future feature,I would like to add google map area and image gallery.
 
 <hr>
 <br>
@@ -186,12 +181,11 @@ Implementation: [TO DO]![Profile](screen shots  TO DO)
 ### Wireframes
 
 <summary>All Wireframe Images</summary>
-[TO DO]
 
-*Designed the wire frame with figma
+![Wireframes](./docs/wireframes.png)
+
+\*Designed the wire frame with figma
 -Wireframes available [here](Screen shots of wireframe TO DO)
-
-
 
 ## The Surface Plane
 
@@ -199,91 +193,84 @@ Implementation: [TO DO]![Profile](screen shots  TO DO)
 
 #### Colour-Scheme
 
-[TO DO]
+Color scheme: black, white and red as main colors
+Icons are used appropriately on buttons to indicate the function and improve the user experience. Bootstrap icons were used in the website.
 
-The background colour 
-Icon, headings and border colours
-Main text is
-The main page background colour
+https://icons.getbootstrap.com/
 
 <hr>
 <br>
 
 #### Typography
 
-The main font used on the website is
-
-[TO DO]
+The main font used on the website is _Open Sans_
 
 <hr>
 <br>
 
 #### Imagery
 
-The images on this website are 
-[TO DO]
+Images used in the site are free with attribution, taken from https://www.pexels.com/
 
 <hr>
 <br>
 
 ## Technologies
 
-* React
-    * Main framework used to create the user interface
-
-* Heroku
-    * Used for application hosting   
-
- [TO DO]   
-
-
- * Github
-    * Repository used to store base code and docs
-
-
+- React
+  - Main framework used to create the user interface https://react.dev/
+- Heroku
+  - Used for application hosting
+- Github
+  - Repository used to store base code and docs
 
 <hr>
 <br>
 
 ## Testing
+
 Testing can be found in the [TESTING.md file][TO DO]
 
 <hr>
 <br>
 
 ## Deployment
+
 ## Heroku Deployment
 
 The site was deployed to Heroku. The steps to deploy are as follows:
 
-* Navigate to heroku and create an account
-* Click the new button in the top right corner
-* Select create new app
-* Enter app name
-* Select region and click create app
-* Click the resources tab and search for Heroku Postgres
-* Select hobby dev and continue
+- Navigate to heroku and create an account
+- Click the new button in the top right corner
+- Select create new app
+- Enter app name
+- Select region and click create app
+- Click the resources tab and search for Heroku Postgres
+- Select hobby dev and continue
 
-* Click the deploy tab
-* Scroll down to Connect to GitHub and sign in / authorize when prompted
-* In the search box, find the repositoy you want to deploy and click connect
-* Scroll down to Manual deploy and choose the main branch
-* Click deploy
+- Click the deploy tab
+- Scroll down to Connect to GitHub and sign in / authorize when prompted
+- In the search box, find the repositoy you want to deploy and click connect
+- Scroll down to Manual deploy and choose the main branch
+- Click deploy
 <hr>
 <br>
-The live link can be found here: [Live Site - Traveller's Diary][TO DO]
+The live link can be found here: [Live Site - Traveller's Diary](https://travellers-diary-0c3253b73ff3.herokuapp.com/)
 
 ## Version Control
 
 The site was created using the Visual Studio Code editor and pushed to github to the remote repository ‘Traveller’s Diary.
 
+https://github.com/chathugaj/travellers-diary
+
 The following git commands were used throughout development to push code to the remote repo:
 
-```git add <file>``` - This command was used to add the file(s) to the staging area before they are committed.
+`git add <file>` - This command was used to add the file(s) to the staging area before they are committed.
 
-```git commit -m “commit message”``` - This command was used to commit changes to the local repository queue ready for the final step.
+`git commit -m “commit message”` - This command was used to commit changes to the local repository queue ready for the final step.
 
-```git push``` - This command was used to push all committed code to the remote repository on github.
+`git push` - This command was used to push all committed code to the remote repository on github.
+
 <hr>
 <br>
 
@@ -301,51 +288,34 @@ The project will now have been cloned on your local machine for use.
 
 Install Dependencies:
 
-```npm install```
+`npm install`
 
 Run Application:
 
-```npm start```
+`npm start`
+
 <hr>
 <br>
 
 ### Forking
+
 [TO DO]
 
 <hr>
 <br>
 
 ## Credits
+
 React code references: https://github.com/mr-fibonacci/moments
 Infinite scrolling: https://www.npmjs.com/package/react-infinite-scroll-component
 Banner image: https://www.pexels.com/
 
 ### Content
 
-Logo used was taken from [TO DO]()
+Main reference used in during the development.
 
-Sign up & Sign in images taken from [TO DO]
+https://docs.djangoproject.com/en/4.2/
 
+https://axios-http.com/docs/intro
 
-### Acknowledgements
-A special thanks to [TO DO]
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+https://learn.codeinstitute.net/courses/course-v1:CodeInstitute+DRF+2/courseware
