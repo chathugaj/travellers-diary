@@ -13,6 +13,7 @@ const LikePost = ({ isOwner, post, setLikeClicked, currentUser }) => {
   };
 
   const handleLike = async () => {
+    console.log(axios.defaults);
     const { status } = await axios.post(`/likes/`, {
       post: post?.id,
       owner: currentUser?.username,
