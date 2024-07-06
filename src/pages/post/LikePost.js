@@ -1,11 +1,11 @@
 import { Col, OverlayTrigger, Row, Tooltip } from "react-bootstrap";
 import styles from "../../styles/PostPage.module.css";
 import React from "react";
-import axios, { axiosReq } from "../../api/axiosDefaults";
-import Cookies from "js-cookie";
+import axios from "../../api/axiosDefaults";
 
 const LikePost = ({ isOwner, post, setLikeClicked, currentUser }) => {
   const handleUnlike = async () => {
+    console.log(axios.defaults);
     const { status } = await axios.delete(`/likes/${post?.like_id}`);
     //We set this false to indicate the user unliked the post
 
