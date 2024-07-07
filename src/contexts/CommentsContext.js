@@ -1,5 +1,5 @@
 import { createContext, useContext, useState } from "react";
-import axios from "../api/axiosDefaults";
+import { axiosReq } from "../api/axiosDefaults";
 
 export const CommentResultsContext = createContext();
 export const SetCommentResultsContext = createContext();
@@ -10,7 +10,7 @@ export const useSetCommentResult = () => useContext(SetCommentResultsContext);
 export const fetchComments = async (post) => {
   const url = `comments/?page=1&post=${post?.id}`;
   try {
-    const { data } = await axios.get(url);
+    const { data } = await axiosReq.get(url);
     return data;
   } catch (e) {
     console.log(e);

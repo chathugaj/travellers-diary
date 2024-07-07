@@ -38,7 +38,6 @@ const SignIn = () => {
     try {
       axios.interceptors.response.use(
         (response) => {
-          console.log(response.headers);
           return response;
         },
         function (error) {
