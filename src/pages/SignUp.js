@@ -11,7 +11,7 @@ import {
 } from "react-bootstrap";
 import styles from "../styles/SignIn.module.css";
 import { Link, useNavigate } from "react-router-dom";
-import axios from "../api/axiosDefaults";
+import axios from "axios";
 
 /**
  * User signup component. Captures username, password and password confirmation
@@ -90,9 +90,9 @@ const SignUp = () => {
                     />
                   </Form.Group>
                   {errors.password1?.map((message, idx) => (
-                      <Alert variant="warning" key={idx}>
-                        {message}
-                      </Alert>
+                    <Alert variant="warning" key={idx}>
+                      {message}
+                    </Alert>
                   ))}
                   <Form.Group className="mb-3" controlId="password2">
                     <Form.Label className="d-none">password2</Form.Label>
@@ -105,9 +105,9 @@ const SignUp = () => {
                     />
                   </Form.Group>
                   {errors.password2?.map((message, idx) => (
-                      <Alert variant="warning" key={idx}>
-                        {message}
-                      </Alert>
+                    <Alert variant="warning" key={idx}>
+                      {message}
+                    </Alert>
                   ))}
                   <div className="mb-3">
                     <Button
@@ -119,9 +119,9 @@ const SignUp = () => {
                     </Button>
                   </div>
                   {errors.non_field_errors?.map((message, idx) => (
-                      <Alert variant="warning" key={idx}>
-                        {message}
-                      </Alert>
+                    <Alert variant="warning" key={idx}>
+                      {message}
+                    </Alert>
                   ))}
                   <span>
                     Already have an account? <Link to="/signin">SIGN IN</Link>

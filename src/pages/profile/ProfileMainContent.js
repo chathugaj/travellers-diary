@@ -2,7 +2,7 @@ import { Alert, Button, Col, Form, Tab, Tabs } from "react-bootstrap";
 import React, { useEffect, useState } from "react";
 import appStyles from "../../App.module.css";
 import styles from "../../styles/Profile.module.css";
-import axios from "../../api/axiosDefaults";
+import { axiosReq } from "../../api/axiosDefaults";
 import { useSetCurrentProfile } from "../../contexts/ProfileContext";
 import SuccessToast from "../../components/SuccessToast";
 import InfiniteScroll from "react-infinite-scroll-component";
@@ -37,11 +37,15 @@ const ProfileMainContent = ({ profile, currentUser }) => {
     }
 
     try {
-      const { data } = await axios.put(`profiles/${profile?.id}/`, formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
+      const { data } = await axiosReq.put(
+        `profiles/${profile?.id}/`,
+        formData,
+        {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        }
+      );
       setCurrentProfile(data);
       setDisplayToast(true);
     } catch (err) {
@@ -64,7 +68,7 @@ const ProfileMainContent = ({ profile, currentUser }) => {
   useEffect(() => {
     const handleMount = async () => {
       try {
-        const { data: reports } = await axios.get(`/reports/`);
+        const { data: reports } = await axiosReq.get(`/reports/`);
         setReports(reports);
       } catch (err) {
         console.log(err);

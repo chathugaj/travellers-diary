@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useMemo, useState } from "react";
-import { axiosReq, axiosRes } from "../api/axiosDefaults";
+import { axiosReq } from "../api/axiosDefaults";
 import axios from "axios";
 
 export const CurrentUserContext = createContext();
@@ -16,7 +16,7 @@ export const CurrentUserProvider = ({ children }) => {
 
   const handleMount = async () => {
     try {
-      const { data } = await axiosRes.get("dj-rest-auth/user/");
+      const { data } = await axiosReq.get("dj-rest-auth/user/");
       setCurrentUser(data);
     } catch (err) {
       console.log(err);
@@ -28,25 +28,25 @@ export const CurrentUserProvider = ({ children }) => {
   }, []);
 
   useMemo(() => {
-    axiosReq.interceptors.request.use(
-      async (config) => {
-        try {
-          await axios.post("/dj-rest-auth/token/refresh/");
-        } catch (err) {
-          setCurrentUser((prevCurrentUser) => {
-            if (prevCurrentUser) {
-              navigate("signin");
-            }
-            return null;
-          });
-          return config;
-        }
-        return config;
-      },
-      (err) => {
-        return Promise.reject(err);
-      }
-    );
+    // axiosReq.interceptors.request.use(
+    //   async (config) => {
+    //     try {
+    //       await axios.post("/dj-rest-auth/token/refresh/");
+    //     } catch (err) {
+    //       setCurrentUser((prevCurrentUser) => {
+    //         if (prevCurrentUser) {
+    //           navigate("signin");
+    //         }
+    //         return null;
+    //       });
+    //       return config;
+    //     }
+    //     return config;
+    //   },
+    //   (err) => {
+    //     return Promise.reject(err);
+    //   }
+    // );
 
     axiosReq.interceptors.response.use(
       (response) => response,

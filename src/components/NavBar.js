@@ -7,7 +7,7 @@ import {
   useSetCurrentUser,
 } from "../contexts/CurrentUserContext";
 import Avatar from "./Avatar";
-import axios from "../api/axiosDefaults";
+import axios from "axios";
 import { useCurrentProfile } from "../contexts/ProfileContext";
 
 const NavBar = () => {

@@ -1,7 +1,7 @@
 import { Col, OverlayTrigger, Row, Tooltip } from "react-bootstrap";
 import styles from "../../styles/PostPage.module.css";
 import React from "react";
-import axios, { axiosReq } from "../../api/axiosDefaults";
+import { axiosReq } from "../../api/axiosDefaults";
 
 const LikePost = ({ isOwner, post, setLikeClicked, currentUser }) => {
   const handleUnlike = async () => {

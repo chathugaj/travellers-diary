@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Button, Col, Container, Form, Row } from "react-bootstrap";
 import appStyles from "../../App.module.css";
 import styles from "../../styles/PostPage.module.css";
-import axios from "axios";
+import { axiosReq } from "../../api/axiosDefaults";
 import { fetchComments } from "../../contexts/CommentsContext";
 
 const CommentForm = ({
@@ -24,7 +24,7 @@ const CommentForm = ({
     event.preventDefault();
     try {
       if (comment) {
-        await axios.put(`/comments/${comment.id}/`, {
+        await axiosReq.put(`/comments/${comment.id}/`, {
           content: commentData.content,
         });
         comment = null;
@@ -32,7 +32,7 @@ const CommentForm = ({
         const response = await fetchComments(post);
         updateCommentResult(response);
       } else {
-        await axios.post(`/comments/`, {
+        await axiosReq.post(`/comments/`, {
           ...commentData,
           owner: currentUser?.username,
           post: post?.id,

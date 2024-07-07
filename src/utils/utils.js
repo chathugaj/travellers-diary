@@ -1,5 +1,4 @@
 import { axiosReq } from "../api/axiosDefaults";
-import axios from "../api/axiosDefaults";
 
 export const fetchMoreData = async (resource, setResource) => {
   try {
@@ -18,7 +17,7 @@ export const fetchMoreData = async (resource, setResource) => {
 
 export const removeItem = async (removable, currentResource) => {
   try {
-    await axios.delete(`/comments/${removable?.id}`);
+    await axiosReq.delete(`/comments/${removable?.id}`);
     const index = currentResource.results.indexOf(removable);
     if (index > -1) {
       currentResource.results.splice(index, 1);

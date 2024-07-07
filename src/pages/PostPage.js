@@ -3,7 +3,7 @@ import { Container, Row } from "react-bootstrap";
 import { Banner } from "../components";
 import { useParams } from "react-router-dom";
 import { useCurrentUser } from "../contexts/CurrentUserContext";
-import axios from "../api/axiosDefaults";
+import { axiosReq } from "../api/axiosDefaults";
 import PostContent from "./post/PostContent";
 import LikePost from "./post/LikePost";
 import CommentForm from "./post/CommentForm";
@@ -23,7 +23,9 @@ const PostPage = () => {
   useEffect(() => {
     const handleMount = async () => {
       try {
-        const [{ data: post }] = await Promise.all([axios.get(`/posts/${id}`)]);
+        const [{ data: post }] = await Promise.all([
+          axiosReq.get(`/posts/${id}`),
+        ]);
         setPost({ results: [post] });
       } catch (err) {
         console.log(err);
