@@ -36,6 +36,15 @@ const SignIn = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
+      axios.interceptors.response.use(
+        (response) => {
+          console.log(response.headers);
+          return response;
+        },
+        function (error) {
+          return Promise.reject(error);
+        }
+      );
       const { data } = await axios.post("/dj-rest-auth/login/", signInData);
       setCurrentUser(data.user);
       navigate("/");
