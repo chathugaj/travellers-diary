@@ -46,9 +46,6 @@ const PostPage = () => {
         title={post?.results[0]?.title}
         subTitle={post?.results[0]?.sub_title}
         banner={post?.results[0]?.banner}
-        authorName={post?.results[0]?.owner}
-        authorProfileImage={post?.results[0]?.profile_image}
-        dateTime={post?.results[0]?.created_at}
       ></Banner>
       <Container fluid>
         <EditorLine post={post?.results[0]} isOwner={isOwner} currentUser={currentUser}></EditorLine>

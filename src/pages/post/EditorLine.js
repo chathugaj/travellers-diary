@@ -3,21 +3,14 @@ import appStyles from "../../App.module.css";
 import styles from "../../styles/PostPage.module.css";
 import { formatToReadableDate } from "../../helpers/commonHelper";
 import { Avatar } from "../../components";
+import { useNavigate } from "react-router-dom";
 
 const EditorLine = ({ isOwner, post, currentUser }) => {
-    const handleUnlike = async () => {
-      const { status } = await axiosReq.delete(`/likes/${post?.like_id}`);
-      //We set this false to indicate the user unliked the post
+
+  const navigate = useNavigate();
   
-      setLikeClicked(!(status === 204));
-    };
-  
-    const handleLike = async () => {
-      const { status } = await axiosReq.post(`/likes/`, {
-        post: post?.id,
-        owner: currentUser?.username,
-      });
-      setLikeClicked(status === 201);
+    const handleEdit = async () => {
+      navigate(`/editor/${post?.id}`)
     };
   
     return (
@@ -39,10 +32,7 @@ const EditorLine = ({ isOwner, post, currentUser }) => {
                 type="submit"
                 variant="dark"
                 className={`${appStyles.CommonButtonSecondary} m-1`}
-                onClick={(event) => {
-                    event.preventDefault();
-                    // handleEditComment(comment);
-                }}
+                onClick={handleEdit}
                 >
                 <i className="bi bi-pencil-square"></i>
                 </Button>

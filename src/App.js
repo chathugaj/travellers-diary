@@ -23,7 +23,8 @@ function App() {
                     <Route path="posts" element={<BlogPosts/>}/>
                     <Route path="posts/:id" element={<PostPage/>}/>
                     <Route path="editor" element={<ContentEditor/>} />
-                    <Route path="profiles/:id" element={<Profile/>}/>
+                    <Route path="editor/:id" element={<ContentEditor/>} />
+                    <Route path="profiles/:id" element={<Profile/>} />
                     <Route path="contactus" element={<ContactUs/>}/>
                 </Route>
                 <Route path="signup" element={<SignUp/>}/>

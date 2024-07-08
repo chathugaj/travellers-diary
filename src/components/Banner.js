@@ -10,10 +10,6 @@ const Banner = ({
   banner,
   title,
   subTitle,
-  authorProfileImage,
-  authorName,
-  authorUserName,
-  dateTime,
   actionButton,
 }) => {
   const navigate = useNavigate();
