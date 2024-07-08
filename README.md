@@ -3,10 +3,10 @@
 Traveller's Diary is a blog which contains articles about travel destinations.These articles were written by travellers.
 
 <br>
-The live link can be found here [Live site - Traveller's Diary](https://travellers-diary-0c3253b73ff3.herokuapp.com)
+The live link can be found here [Live Link](https://travellers-diary-0c3253b73ff3.herokuapp.com)
 <br>
 
-![Mockup](screen shots mock up TO DO)
+![Mockup](./docs/preview.png)
 
 ## The Strategy Plane
 
@@ -21,9 +21,9 @@ Traveller's Diary is a blog website where travelers can share their experiences,
 This project was developed using agile methodologies by delivering small features in incremental sprints. There were 3 sprints in total, spaced out evenly over three weeks.
 
 All stories were assigned to epics, prioritized under the labels, Must have, should have, could have and assigned to sprints. "Must have" stories were completed first, "should haves" and then finally "could haves".
-The Kanban board was created using github projects and can be located [TO DO](Git hub board link TO DO) and can be viewed to see more information on the project cards.Only user stories have acceptance critieria to define the certain excecution.
+The Kanban board was created using github projects and can be located [Project board](https://github.com/users/chathugaj/projects/3) and can be viewed to see more information on the project cards.Only user stories have acceptance critieria to define the certain excecution.
 
-![TO DO KANBAN](./docs/kanban_screenshot_traveller.png)
+![KANBAN](./docs/kanban_screenshot_traveller.png)
 
 <hr>
 
@@ -137,16 +137,16 @@ User Story:
 \*As a user I want to read posts on the website, so that I can enjoy the other traverllers experience.
 Implementation: [Blog posts page]![Posts page and search](./docs/posts_page.png)
 
-Implementation: [Home page with recent articles]![Home page with recent articles](./docs/home_articles.png)
+Implementation: [Home page with recent articles]![Home page with recent articles](./docs/home.png)
 
 **Authentication**
 User Story:
 \*As an authenticted user only, I can comment on articles, so that I can share my thoughts on a post.
-Implementation: [Unauthenticated]![Unauthenticated](./docs/comment_blocked_for_Unauthenticated.png)
+Implementation: [Unauthenticated]![Unauthenticated](./docs/comments_unauthenticated.png)
 
 User Story:
 \*As an authenticated user only, I can access the article editor, so that I can write articles.
-Implementation: [TO DO]![Authentication ](screen shots TO DO)
+Implementation: ![Editor](./docs/editor_loggedIn.png)
 
 **Comments**
 User Story:
@@ -155,7 +155,7 @@ Implementation: [Write article is clickable]![Write article button goes to edito
 
 User Story:
 \*As a user I want to create and manage my comments on posts.
-Implementation: [Edit and delete comments]![Edit and delete comments](./docs/edit_delete_signedin.png)
+Implementation: [Edit and delete comments]![Edit and delete comments](./docs/comments_authenticated_user.png)
 
 **Profile**
 
@@ -184,8 +184,7 @@ Implementation: [Profile]![Profile](./docs/profile.png)
 
 ![Wireframes](./docs/wireframes.png)
 
-\*Designed the wire frame with figma
--Wireframes available [here](Screen shots of wireframe TO DO)
+\*Designed the wire frame with figma.
 
 ## The Surface Plane
 
@@ -300,7 +299,13 @@ Run Application:
 
 ### Forking
 
-[TO DO]
+Forks can be used to either propose changes to someone else's project or to use the project as a starting point for your own idea.
+
+Navigate to the GitHub Repository you want to fork.
+
+On the top right of the page under the header, click the fork button.
+
+This will create a duplicate of the full project in your GitHub Repository.
 
 <hr>
 <br>
@@ -323,4 +328,16 @@ https://learn.codeinstitute.net/courses/course-v1:CodeInstitute+DRF+2/courseware
 
 ### BUGS and ISSUES
 
-- Local application works without any issues. But in the heroku deployed version the users's session is immediately lost after the signin. I have been trying to resove this for few days now, without any luck. I took a discussion with my mentor also without any success.
+- A TypeError error appears in the console, which I was unsuccessful to find the origination point.
+  ![TypeError](./docs/type_error.png)
+
+- Browser displays a thirdparty cookie warning, indicating thirdparty cookies will be blocked in a future release. This could potentially break the website.
+  ![Thirdparty cookie issue](./docs/thirdparty_cookie.png)
+
+<hr>
+<br>
+
+# Acknolwledgements
+
+- Special thanks goes to Sara and Roman in tutor support for taking time and helping out to fix the CORS and login issues I had in the project.
+- Special thanks to [Gareth McGirr](https://github.com/Gareth-McGirr) for mentoring and advice on various aspects of the project and helping out to solve issues.
