@@ -334,6 +334,8 @@ https://learn.codeinstitute.net/courses/course-v1:CodeInstitute+DRF+2/courseware
 - Browser displays a thirdparty cookie warning, indicating thirdparty cookies will be blocked in a future release. This could potentially break the website.
   ![Thirdparty cookie issue](./docs/thirdparty_cookie.png)
 
+- Contact us view shows the confirmation popup message when user navigates to the page. I was unable to find the root cause for this.
+
 <hr>
 <br>
 
