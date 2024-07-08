@@ -1,6 +1,6 @@
 import { Alert, Button, Col, Container, Form, Row } from "react-bootstrap";
 import React, { useEffect, useState } from "react";
-import axios from "../api/axiosDefaults";
+import { axiosReq } from "../api/axiosDefaults";
 import appStyles from "../App.module.css";
 import styles from "../styles/ContentEditor.module.css";
 import SuccessToast from "../components/SuccessToast";
@@ -53,7 +53,7 @@ const ContentEditor = () => {
     }
 
     try {
-      await axios.post("/posts/", formData, {
+      await axiosReq.post("/posts/", formData, {
         headers: {
           "Content-Type": "multipart/form-data",
         },

@@ -19,7 +19,7 @@ const ProfileCard = ({ profile }) => {
                 className={`${styles.MetaLink} ${styles.ProfileText}`}
                 to={`/posts/?search=${profile?.owner}`}
               >
-                <Col>{profile?.post_count}</Col>
+                <Col>{profile?.posts_count}</Col>
               </Link>
             </Row>
             <Row>

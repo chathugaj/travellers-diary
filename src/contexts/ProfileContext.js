@@ -1,5 +1,5 @@
 import { createContext, useContext, useEffect, useState } from "react";
-import axios from "../api/axiosDefaults";
+import { axiosReq } from "../api/axiosDefaults";
 import { useCurrentUser } from "./CurrentUserContext";
 
 export const CurrentProfileContext = createContext();
@@ -14,7 +14,7 @@ export const CurrentProfileProvider = ({ children }) => {
 
   const handleMount = async () => {
     try {
-      const { data } = await axios.get(`profiles/${currentUser?.id}`);
+      const { data } = await axiosReq.get(`profiles/${currentUser?.id}`);
       setCurrentProfile(data);
     } catch (err) {
       console.log(err);

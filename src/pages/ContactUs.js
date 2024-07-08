@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { Alert, Button, Col, Container, Form } from "react-bootstrap";
 import appStyles from "../App.module.css";
-import axios from "../api/axiosDefaults";
+import { axiosReq } from "../api/axiosDefaults";
 import { SectionHeader } from "../components";
 import SuccessToast from "../components/SuccessToast";
 
@@ -17,7 +17,7 @@ const ContactUs = () => {
   const handleSubmit = async (event) => {
     event.preventDefault();
     try {
-      await axios.post("/reports/", contactUsData);
+      await axiosReq.post("/reports/", contactUsData);
       setContactUsData({
         reason: "",
         message: "",

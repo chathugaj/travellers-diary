@@ -1,5 +1,5 @@
 import { createContext, useContext, useState } from "react";
-import axios from "../api/axiosDefaults";
+import { axiosReq } from "../api/axiosDefaults";
 
 export const SearchResultContext = createContext();
 export const SetSearchResultContext = createContext();
@@ -12,7 +12,7 @@ export async function fetchArticles(search) {
     url = `${url}?page=1&search=${search}`;
   }
   try {
-    const { data } = await axios.get(url);
+    const { data } = await axiosReq.get(url);
     return data;
   } catch (e) {
     console.log(e);
