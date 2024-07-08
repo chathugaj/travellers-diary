@@ -132,6 +132,17 @@ As a user I want to create and publish my articles, so that I can share my exper
 
 Implementation: [Content creation]![Content creation ](./docs/create_post.png)
 
+User Story:
+As a owner of a post I want to be able to edit the post.
+
+Implementation: [Owner View]![Owner view](./docs/owner_view_post.png)
+Implementation: [Editor View]![Editor view](./docs/edit_view_post.png)
+
+User Story:
+As a user I cannot edit posts written by others.
+
+Implementation: [Non Owner View]![Non Owner View](./docs/non_owner_view_post.png)
+
 **Content view**
 User Story:
 \*As a user I want to read posts on the website, so that I can enjoy the other traverllers experience.
