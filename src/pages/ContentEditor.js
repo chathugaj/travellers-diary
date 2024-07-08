@@ -138,7 +138,8 @@ const ContentEditor = () => {
               <Form.Control
                 name="sub_title"
                 type="text"
-                placeholder="Sub Title" //value={sub_title}
+                placeholder="Sub Title" 
+                value={editorData.sub_title}
                 onChange={handleChange}
               ></Form.Control>
             </Form.Group>
