@@ -4,6 +4,7 @@ import { axiosReq } from "../api/axiosDefaults";
 import appStyles from "../App.module.css";
 import styles from "../styles/ContentEditor.module.css";
 import SuccessToast from "../components/SuccessToast";
+import { useNavigate, useParams } from "react-router-dom";
 
 const ContentEditor = () => {
   const [editorData, setEditorData] = useState({
@@ -16,10 +17,28 @@ const ContentEditor = () => {
   const [bannerInput, setBannerInput] = useState(null);
   const [errors, setErrors] = useState({});
   const [showToast, setShowToast] = useState("");
+  const {id} = useParams()
+  const [post, setPost] = useState({})
+  const navigate = useNavigate();
 
   useEffect(() => {
     setBannerInput(document.getElementById("bannerInput"));
   }, []);
+
+  useEffect(() => {
+    if (id) {
+      const loadPost = async () => {
+        const {data} = await axiosReq.get(`/posts/${id}`);
+        setPost(data);
+        setEditorData({
+          title: data.title,
+          sub_title: data.sub_title,
+          body: data.body,
+        });
+      }
+      loadPost();
+    }
+  }, [id])
 
   const handleChange = (event) => {
     setEditorData({
@@ -53,18 +72,35 @@ const ContentEditor = () => {
     }
 
     try {
-      await axiosReq.post("/posts/", formData, {
-        headers: {
-          "Content-Type": "multipart/form-data",
-        },
-      });
-      setEditorData({
-        title: "",
-        sub_title: "",
-        slug: "",
-        banner: "",
-        body: "",
-      });
+      if (post && id) {
+        await axiosReq.put(`/posts/${id}/`, formData, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        });
+        setEditorData({
+          title: "",
+          sub_title: "",
+          slug: "",
+          banner: "",
+          body: "",
+        });
+        navigate(`/posts/${id}`)
+      } else {
+        await axiosReq.post("/posts/", formData, {
+          headers: {
+            "Content-Type": "multipart/form-data",
+          },
+        });
+        setEditorData({
+          title: "",
+          sub_title: "",
+          slug: "",
+          banner: "",
+          body: "",
+        });
+
+      }
       setShowToast(
         `Your blog post saved successfully. Visit /posts to view the published article`
       );
@@ -111,7 +147,8 @@ const ContentEditor = () => {
                 {message}
               </Alert>
             ))}
-            <Form.Group className="mb-3" controlId="bannerInput">
+            {post ? '': (
+              <Form.Group className="mb-3" controlId="bannerInput">
               <Form.Label className="d-none">banner</Form.Label>
               <Form.Control
                 name="banner"
@@ -129,6 +166,7 @@ const ContentEditor = () => {
               &nbsp;
               <Form.Text>{bannerInput?.files[0]?.name}</Form.Text>
             </Form.Group>
+            )}
             {errors.banner?.map((message, idx) => (
               <Alert variant="warning" key={idx}>
                 {message}
