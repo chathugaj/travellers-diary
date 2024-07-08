@@ -7,6 +7,7 @@ import { axiosReq } from "../api/axiosDefaults";
 import PostContent from "./post/PostContent";
 import LikePost from "./post/LikePost";
 import CommentForm from "./post/CommentForm";
+import EditorLine from "./post/EditorLine";
 import { useCurrentProfile } from "../contexts/ProfileContext";
 import CommentList from "./post/CommentList";
 import { CommentsProvider } from "../contexts/CommentsContext";
@@ -50,6 +51,7 @@ const PostPage = () => {
         dateTime={post?.results[0]?.created_at}
       ></Banner>
       <Container fluid>
+        <EditorLine post={post?.results[0]} isOwner={isOwner} currentUser={currentUser}></EditorLine>
         <PostContent post={post?.results[0]} />
         <LikePost
           isOwner={isOwner}

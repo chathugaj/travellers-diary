@@ -3,8 +3,6 @@ import { Container, Row, Col, Button } from "react-bootstrap";
 import styles from "../styles/Banner.module.css";
 import appStyles from "../App.module.css";
 import defaultBanner from "../assets/common_banner.jpeg";
-import { Avatar } from "./index";
-import { formatToReadableDate } from "../helpers/commonHelper";
 import { useNavigate } from "react-router-dom";
 import { useCurrentUser } from "../contexts/CurrentUserContext";
 
@@ -49,21 +47,6 @@ const Banner = ({
                 <></>
               )}
               <h2 className={styles.H2}>{subTitle}</h2>
-              <span className={styles.Meta}>
-                {authorProfileImage ? (
-                  <Avatar src={authorProfileImage}></Avatar>
-                ) : (
-                  ""
-                )}{" "}
-                &nbsp;
-                {authorName || authorUserName ? (
-                  <p>{authorName ? authorName : authorUserName}</p>
-                ) : (
-                  ""
-                )}{" "}
-                &nbsp;
-                {dateTime ? formatToReadableDate(dateTime) : ""}
-              </span>
             </div>
           </Col>
         </Row>
