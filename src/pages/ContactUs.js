@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Alert, Button, Col, Container, Form } from "react-bootstrap";
+import { Alert, Button, Col, Container, Form, Row } from "react-bootstrap";
 import appStyles from "../App.module.css";
 import { axiosReq } from "../api/axiosDefaults";
 import { SectionHeader } from "../components";
@@ -10,7 +10,7 @@ const ContactUs = () => {
     reason: "",
     message: "",
   });
-  const [showToast, setShowToast] = useState(false);
+  const [showToast, setShowToast] = useState("");
   const [errors, setErrors] = useState({});
   const { reason, message } = contactUsData;
 
@@ -22,7 +22,7 @@ const ContactUs = () => {
         reason: "",
         message: "",
       });
-      setShowToast(true);
+      setShowToast("Your message is sent successfully");
     } catch (err) {
       setErrors(err.response?.data);
     }
@@ -36,11 +36,12 @@ const ContactUs = () => {
 
   return (
     <Container fluid className={appStyles.ContentContainer}>
-      <Col>
-        <SuccessToast
-          show={showToast}
+      <SuccessToast
+          show={showToast?.length > 0}
           message="Your message is sent successfully"
         ></SuccessToast>
+      <Row>
+      <Col>
         <SectionHeader title="Contact Us"></SectionHeader>
         <Form onSubmit={handleSubmit.bind(this)}>
           <Form.Group className="mb-3" controlId="reason">
@@ -90,6 +91,7 @@ const ContactUs = () => {
           ))}
         </Form>
       </Col>
+      </Row>
     </Container>
   );
 };
